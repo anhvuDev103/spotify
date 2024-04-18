@@ -11,44 +11,44 @@ module.exports = {
   root: true,
   env: { browser: true, es2020: true },
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
-    "prettier",
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    'prettier'
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
-  parser: "@typescript-eslint/parser",
-  plugins: ["react-refresh", "simple-import-sort", "prettier"],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['react-refresh', 'simple-import-sort', 'prettier'],
   rules: {
-    "react-refresh/only-export-components": [
-      "warn",
-      { allowConstantExport: true },
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true }
     ],
-    "prettier/prettier": [
-      "warn",
+    'prettier/prettier': [
+      'warn',
       {
-        arrowParens: "always",
+        arrowParens: 'always',
         semi: true,
-        trailingComma: "none",
+        trailingComma: 'none',
         tabWidth: 2,
-        endOfLine: "auto",
+        endOfLine: 'auto',
         useTabs: false,
         singleQuote: true,
         printWidth: 80,
-        jsxSingleQuote: true,
-      },
+        jsxSingleQuote: true
+      }
     ],
-    "@typescript-eslint/no-explicit-any": "warn",
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
       {
-        argsIgnorePattern: "^_",
-        varsIgnorePattern: "^_",
-      },
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_'
+      }
     ],
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
-  },
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error'
+  }
 };
 ```
 
@@ -101,27 +101,27 @@ add hooks into .husky/pre-commit: `npx lint-staged`
 # vite.config.ts
 
 ```ts
-import react from "@vitejs/plugin-react-swc";
-import fs from "fs";
-import path from "path";
-import { defineConfig } from "vite";
+import react from '@vitejs/plugin-react-swc';
+import fs from 'fs';
+import path from 'path';
+import { defineConfig } from 'vite';
 
 function getAlias() {
   const rootProject = process.cwd();
 
   const entriesAlias = fs
-    .readdirSync(path.resolve(rootProject, "src/"))
+    .readdirSync(path.resolve(rootProject, 'src/'))
     .filter(isFolder)
     .map((folderName) => {
-      const alias = "@" + folderName;
-      const realPath = path.resolve(rootProject, "src/" + folderName);
+      const alias = '@' + folderName;
+      const realPath = path.resolve(rootProject, 'src/' + folderName);
       return [alias, realPath];
     });
 
   return Object.fromEntries(entriesAlias);
 
   function isFolder(dirname: string): boolean {
-    return dirname.indexOf(".") === -1;
+    return dirname.indexOf('.') === -1;
   }
 }
 
@@ -133,17 +133,17 @@ export default defineConfig({
     react({
       plugins: [
         [
-          "@swc/plugin-styled-components",
+          '@swc/plugin-styled-components',
           {
-            displayName: true,
-          },
-        ],
-      ],
-    }),
+            displayName: true
+          }
+        ]
+      ]
+    })
   ],
   resolve: {
-    alias: foldersName,
-  },
+    alias: foldersName
+  }
 });
 ```
 
@@ -185,9 +185,9 @@ export default defineConfig({
 # src/theme.d.ts
 
 ```ts
-import { Theme } from "@styles/theme";
+import { Theme } from '@styles/theme';
 
-declare module "styled-components" {
+declare module 'styled-components' {
   export interface DefaultTheme extends Theme {}
 }
 ```
@@ -195,9 +195,9 @@ declare module "styled-components" {
 # src/styles/theme.ts
 
 ```ts
-import { Interpolation } from "styled-components";
+import { Interpolation } from 'styled-components';
 
-type Mode = "dark" | "light";
+type Mode = 'dark' | 'light';
 
 export type InterpolationMapped<K extends string | number | symbol> = {
   [key in K]: Interpolation<object>;
@@ -205,131 +205,131 @@ export type InterpolationMapped<K extends string | number | symbol> = {
 
 export const getDesignTokens = (mode: Mode) => {
   const getColor = (lightColor: string, darkColor: string) =>
-    mode === "light" ? lightColor : darkColor;
+    mode === 'light' ? lightColor : darkColor;
 
   return {
     palette: {
       common: {
-        white: "#ffffff",
-        white20: "#ffffff33",
-        white40: "#ffffff66",
-        white60: "#ffffff99",
-        black: "#000000",
-        black10: "#0000001a",
-        black60: "#00000099",
-        muted: "#00000040",
+        white: '#ffffff',
+        white20: '#ffffff33',
+        white40: '#ffffff66',
+        white60: '#ffffff99',
+        black: '#000000',
+        black10: '#0000001a',
+        black60: '#00000099',
+        muted: '#00000040'
       },
       success: {
-        main: getColor("#4edb95", ""),
-        hover: getColor("#4edb9599", ""),
-        contrast: getColor("#000000", ""),
-        "60": getColor("#4edb9599", ""),
+        main: getColor('#4edb95', ''),
+        hover: getColor('#4edb9599', ''),
+        contrast: getColor('#000000', ''),
+        '60': getColor('#4edb9599', '')
       },
       warning: {
-        main: getColor("#ffca02", ""),
-        hover: getColor("#ffca0299", ""),
-        contrast: getColor("#000000", ""),
+        main: getColor('#ffca02', ''),
+        hover: getColor('#ffca0299', ''),
+        contrast: getColor('#000000', '')
       },
       danger: {
-        main: getColor("#ff5a58", ""),
-        hover: getColor("#ff5a5899", ""),
-        contrast: getColor("#ffffff", ""),
+        main: getColor('#ff5a58', ''),
+        hover: getColor('#ff5a5899', ''),
+        contrast: getColor('#ffffff', '')
       },
       disabled: {
-        main: getColor("#e5e5e5", ""),
-        hover: getColor("#e5e5e599", ""),
-        contrast: getColor("#8b8b8b", ""),
+        main: getColor('#e5e5e5', ''),
+        hover: getColor('#e5e5e599', ''),
+        contrast: getColor('#8b8b8b', '')
       },
       background: {
-        default: getColor("#8c87c3", ""),
-        paper: getColor("#ffffff", ""),
+        default: getColor('#8c87c3', ''),
+        paper: getColor('#ffffff', '')
       },
       border: {
-        main: getColor("#000000", ""),
-      },
+        main: getColor('#000000', '')
+      }
     },
     typography: {
       bold12: {
-        fontSize: "1.2rem",
-        fontWeight: "700",
+        fontSize: '1.2rem',
+        fontWeight: '700'
       },
       semi12: {
-        fontSize: "1.2rem",
-        fontWeight: "600",
+        fontSize: '1.2rem',
+        fontWeight: '600'
       },
       medium12: {
-        fontSize: "1.2rem",
-        fontWeight: "500",
+        fontSize: '1.2rem',
+        fontWeight: '500'
       },
       light12: {
-        fontSize: "1.2rem",
-        fontWeight: "400",
+        fontSize: '1.2rem',
+        fontWeight: '400'
       },
       bold14: {
-        fontSize: "1.4rem",
-        fontWeight: "700",
+        fontSize: '1.4rem',
+        fontWeight: '700'
       },
       semi14: {
-        fontSize: "1.4rem",
-        fontWeight: "600",
+        fontSize: '1.4rem',
+        fontWeight: '600'
       },
       medium14: {
-        fontSize: "1.4rem",
-        fontWeight: "500",
+        fontSize: '1.4rem',
+        fontWeight: '500'
       },
       light14: {
-        fontSize: "1.4rem",
-        fontWeight: "400",
+        fontSize: '1.4rem',
+        fontWeight: '400'
       },
       bold16: {
-        fontSize: "1.6rem",
-        fontWeight: "700",
+        fontSize: '1.6rem',
+        fontWeight: '700'
       },
       semi16: {
-        fontSize: "1.6rem",
-        fontWeight: "600",
+        fontSize: '1.6rem',
+        fontWeight: '600'
       },
       medium16: {
-        fontSize: "1.6rem",
-        fontWeight: "500",
+        fontSize: '1.6rem',
+        fontWeight: '500'
       },
       light16: {
-        fontSize: "1.6rem",
-        fontWeight: "400",
+        fontSize: '1.6rem',
+        fontWeight: '400'
       },
       bold20: {
-        fontSize: "2rem",
-        fontWeight: "700",
+        fontSize: '2rem',
+        fontWeight: '700'
       },
       semi20: {
-        fontSize: "2rem",
-        fontWeight: "600",
+        fontSize: '2rem',
+        fontWeight: '600'
       },
       medium20: {
-        fontSize: "2rem",
-        fontWeight: "500",
+        fontSize: '2rem',
+        fontWeight: '500'
       },
       light20: {
-        fontSize: "2rem",
-        fontWeight: "400",
+        fontSize: '2rem',
+        fontWeight: '400'
       },
       bold24: {
-        fontSize: "2.4rem",
-        fontWeight: "700",
+        fontSize: '2.4rem',
+        fontWeight: '700'
       },
       semi24: {
-        fontSize: "2.4rem",
-        fontWeight: "600",
+        fontSize: '2.4rem',
+        fontWeight: '600'
       },
       medium24: {
-        fontSize: "2.4rem",
-        fontWeight: "500",
+        fontSize: '2.4rem',
+        fontWeight: '500'
       },
       light24: {
-        fontSize: "2.4rem",
-        fontWeight: "400",
-      },
-    },
+        fontSize: '2.4rem',
+        fontWeight: '400'
+      }
+    }
   };
 };
 
@@ -338,5 +338,8 @@ export type Theme = ReturnType<typeof getDesignTokens>;
 
 # Last step
 
-Wrap App by <ThemeProvider theme={getDesignTokens('light')}>
+```txt
+Wrap App by
+<ThemeProvider theme={getDesignTokens('light')}>
 Add src/theme.d.ts
+```

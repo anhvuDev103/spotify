@@ -7,8 +7,8 @@ export type InterpolationMapped<K extends string | number | symbol> = {
 };
 
 export const getDesignTokens = (mode: Mode) => {
-  const getColor = (lightColor: string, darkColor: string) =>
-    mode === 'light' ? lightColor : darkColor;
+  const getColor = (darkColor: string, lightColor: string) =>
+    mode === 'dark' ? darkColor : lightColor;
 
   return {
     palette: {
@@ -44,11 +44,15 @@ export const getDesignTokens = (mode: Mode) => {
         contrast: getColor('#8b8b8b', '')
       },
       background: {
-        default: getColor('#8c87c3', ''),
-        paper: getColor('#ffffff', '')
+        default: getColor('#000000', ''),
+        paper: getColor('#121212', '')
       },
       border: {
         main: getColor('#000000', '')
+      },
+      text: {
+        main: getColor('#ffffff', ''),
+        muted: getColor('b3b3b3', '')
       }
     },
     typography: {
