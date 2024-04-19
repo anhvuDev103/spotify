@@ -8,7 +8,6 @@ const GlobalStyles = createGlobalStyle`
 
         font-family: 'Circular';
         font-weight: normal;
-        color: ${({ theme }) => theme.palette.text.main};
         font-size: 1.6rem;
     }
 
