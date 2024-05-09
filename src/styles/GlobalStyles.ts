@@ -9,6 +9,10 @@ const GlobalStyles = createGlobalStyle`
         font-family: 'Circular';
         font-weight: normal;
         font-size: 1.6rem;
+
+        &:not(path) {
+            color: ${({ theme }) => theme.palette.text.muted};
+        }
     }
 
     html {
@@ -24,6 +28,11 @@ const GlobalStyles = createGlobalStyle`
     body {
         background-color: ${({ theme }) => theme.palette.background.default};
     }
+
+    p,h1,h2,h3,h4,h5,h6 {
+        display: inline-block;
+    }
+
 `;
 
 export default GlobalStyles;

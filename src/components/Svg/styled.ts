@@ -1,14 +1,18 @@
 import { getThemeValue } from '@utils/common';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { SvgProps } from './types';
 
 const Svg = styled.svg<SvgProps>`
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  font-size: 2.4rem;
   color: ${({ theme, color }) =>
     getThemeValue(theme.palette, color || 'text.muted')};
+
+  ${({ size }) => css`
+    width: ${size || '1em'};
+    height: ${size || '1em'};
+  `}
 `;
 
 export default Svg;
