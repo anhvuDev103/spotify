@@ -10,11 +10,20 @@ const Button: React.FC<ButtonProps> = ({
   variant,
   rounded,
   size,
+  endIcon,
+  hoverScale,
   ...props
 }) => {
   return (
-    <ButtonFrame $variant={variant} $rounded={rounded} $size={size} {...props}>
+    <ButtonFrame
+      $variant={variant}
+      $rounded={rounded}
+      $size={size}
+      $hoverScale={!!hoverScale}
+      {...props}
+    >
       {children}
+      {endIcon && <div className='endIcon'>{endIcon}</div>}
     </ButtonFrame>
   );
 };
