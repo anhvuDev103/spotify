@@ -7,7 +7,9 @@ interface Props {
   children: React.ReactNode;
 }
 
-const MainLayoutFrame = styled.main``;
+const MainLayoutFrame = styled.main`
+  padding: 8px;
+`;
 
 const MainContent = styled.section``;
 

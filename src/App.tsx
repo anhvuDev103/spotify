@@ -9,18 +9,24 @@ function App() {
   return (
     <ThemeProvider theme={getDesignTokens('dark')}>
       <GlobalStyles />
-      <MainLayout>
-        <BrowserRouter>
-          <Routes>
-            {ROUTES.map((route) => {
-              const Page = route.element;
-              return (
-                <Route path={route.path} element={<Page />} key={route.path} />
-              );
-            })}
-          </Routes>
-        </BrowserRouter>
-      </MainLayout>
+      <BrowserRouter>
+        <Routes>
+          {ROUTES.map((route) => {
+            const Page = route.element;
+            return (
+              <Route
+                path={route.path}
+                element={
+                  <MainLayout>
+                    <Page />
+                  </MainLayout>
+                }
+                key={route.path}
+              />
+            );
+          })}
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
