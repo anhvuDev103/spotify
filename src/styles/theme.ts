@@ -47,12 +47,17 @@ export const getDesignTokens = (mode: Mode) => {
         default: getColor('#000000', ''),
         paper: getColor('#121212', '')
       },
+      ghost: {
+        main: getColor('#ffffff12', ''),
+        hover: getColor('#ffffff1a', ''),
+        contrast: getColor('#ffffff', '')
+      },
       border: {
         main: getColor('#000000', '')
       },
       text: {
         main: getColor('#ffffff', ''),
-        muted: getColor('b3b3b3', '')
+        muted: getColor('#b3b3b3', '')
       }
     },
     typography: {
@@ -68,7 +73,7 @@ export const getDesignTokens = (mode: Mode) => {
         fontSize: '1.2rem',
         fontWeight: '500'
       },
-      light12: {
+      regular12: {
         fontSize: '1.2rem',
         fontWeight: '400'
       },
@@ -84,7 +89,7 @@ export const getDesignTokens = (mode: Mode) => {
         fontSize: '1.4rem',
         fontWeight: '500'
       },
-      light14: {
+      regular14: {
         fontSize: '1.4rem',
         fontWeight: '400'
       },
@@ -100,7 +105,7 @@ export const getDesignTokens = (mode: Mode) => {
         fontSize: '1.6rem',
         fontWeight: '500'
       },
-      light16: {
+      regular16: {
         fontSize: '1.6rem',
         fontWeight: '400'
       },
@@ -116,7 +121,7 @@ export const getDesignTokens = (mode: Mode) => {
         fontSize: '2rem',
         fontWeight: '500'
       },
-      light20: {
+      regular20: {
         fontSize: '2rem',
         fontWeight: '400'
       },
@@ -132,7 +137,7 @@ export const getDesignTokens = (mode: Mode) => {
         fontSize: '2.4rem',
         fontWeight: '500'
       },
-      light24: {
+      regular24: {
         fontSize: '2.4rem',
         fontWeight: '400'
       }
