@@ -1,12 +1,16 @@
 import { PaperFrame } from './styled';
-import { PAPER_VARIANTS, PaperProps } from './types';
+import { DEFAULT_PAPER_VARIANT, PaperProps } from './types';
 
-const Paper: React.FC<PaperProps> = ({ variant, children }) => {
-  return <PaperFrame $variant={variant}>{children}</PaperFrame>;
+const Paper: React.FC<PaperProps> = ({ variant, children, ...props }) => {
+  return (
+    <PaperFrame $variant={variant} {...props}>
+      {children}
+    </PaperFrame>
+  );
 };
 
 Paper.defaultProps = {
-  variant: PAPER_VARIANTS.CONTAINED
+  variant: DEFAULT_PAPER_VARIANT
 };
 
 export default Paper;

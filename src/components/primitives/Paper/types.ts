@@ -1,10 +1,10 @@
-export const PAPER_VARIANTS = {
-  CONTAINED: 'contained'
-} as const;
-
-export type PaperVariant = (typeof PAPER_VARIANTS)[keyof typeof PAPER_VARIANTS];
+export enum PaperVariants {
+  Contained = 'contained'
+}
 
 export interface PaperProps {
-  variant?: PaperVariant;
+  variant?: PaperVariants;
   children: React.ReactNode;
 }
+
+export const DEFAULT_PAPER_VARIANT = PaperVariants.Contained;

@@ -1,27 +1,28 @@
 import { InterpolationMapped, Theme } from '@styles/theme';
 import styled from 'styled-components';
 
-import { PAPER_VARIANTS, PaperVariant } from './types';
+import { PaperVariants } from './types';
 
 interface StyledPaperProps {
-  $variant?: PaperVariant;
+  $variant?: PaperVariants;
 }
 
 interface ThemedButtonProps extends StyledPaperProps {
   theme: Theme;
 }
 
-const getVariantStyle = ({
-  $variant = PAPER_VARIANTS.CONTAINED,
-  theme
-}: ThemedButtonProps) => {
+const getVariantStyle = ({ $variant, theme }: ThemedButtonProps) => {
   const styles = {
-    [PAPER_VARIANTS.CONTAINED]: {}
-  } as InterpolationMapped<PaperVariant>;
+    [PaperVariants.Contained]: {
+      backgroundColor: theme.palette.background.paper
+    }
+  } as InterpolationMapped<PaperVariants>;
 
-  return styles[$variant];
+  return styles[$variant!];
 };
 
 export const PaperFrame = styled.div<StyledPaperProps>`
+  border-radius: 8px;
+
   ${getVariantStyle}
 `;
