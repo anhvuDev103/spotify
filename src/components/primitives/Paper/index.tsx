@@ -10,7 +10,7 @@ const Paper: React.FC<PaperProps> = ({ variant, children, ...props }) => {
 };
 
 Paper.defaultProps = {
-  variant: DEFAULT_PAPER_VARIANT
+  variant: DEFAULT_PAPER_VARIANT,
 };
 
 export default Paper;

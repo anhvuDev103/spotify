@@ -2,7 +2,7 @@ import {
   ArrowDownCircleIcon,
   BellIcon,
   ChevronLeftIcon,
-  ChevronRightIcon
+  ChevronRightIcon,
 } from '@components/Svg';
 
 import Button from '../Button';

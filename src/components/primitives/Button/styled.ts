@@ -7,7 +7,7 @@ import {
   ButtonSizesEnum,
   ButtonVariants,
   ButtonVariantsEnum,
-  StyledButtonProps
+  StyledButtonProps,
 } from './types';
 
 interface ThemedButtonProps extends StyledButtonProps {
@@ -21,27 +21,27 @@ const getVariantStyle = ({ $variant, theme }: ThemedButtonProps) => {
       color: theme.palette.button.ghost.contrast,
 
       '&:hover': {
-        backgroundColor: theme.palette.button.ghost.hover
-      }
+        backgroundColor: theme.palette.button.ghost.hover,
+      },
     },
 
     [ButtonVariantsEnum.Contained]: {
       backgroundColor: theme.palette.button.contained.main,
-      color: theme.palette.button.contained.contrast
+      color: theme.palette.button.contained.contrast,
     },
     [ButtonVariantsEnum.Emphasize]: {},
     [ButtonVariantsEnum.Icon]: {
       backgroundColor: theme.palette.button.icon.main,
 
       '&:hover': {
-        backgroundColor: theme.palette.button.icon.hover
+        backgroundColor: theme.palette.button.icon.hover,
       },
 
       img: {
         width: '100%',
         height: '100%',
-        borderRadius: '50%'
-      }
+        borderRadius: '50%',
+      },
     },
     [ButtonVariantsEnum.Outline]: {},
     [ButtonVariantsEnum.Clear]: {
@@ -51,10 +51,10 @@ const getVariantStyle = ({ $variant, theme }: ThemedButtonProps) => {
         color: theme.palette.button.clear.contrast,
 
         svg: {
-          color: theme.palette.button.clear.contrast
-        }
-      }
-    }
+          color: theme.palette.button.clear.contrast,
+        },
+      },
+    },
   } as InterpolationMapped<ButtonVariants>;
 
   return styles[$variant!];
@@ -63,7 +63,7 @@ const getVariantStyle = ({ $variant, theme }: ThemedButtonProps) => {
 const getSizeStyle = ({ $size, $variant, theme }: ThemedButtonProps) => {
   const styles = {
     [ButtonSizesEnum.Small]: {
-      height: 24
+      height: 24,
     },
     [ButtonSizesEnum.Medium]: {
       height: 32,
@@ -76,22 +76,22 @@ const getSizeStyle = ({ $size, $variant, theme }: ThemedButtonProps) => {
 
         '&:hover': {
           svg: {
-            color: theme.palette.text.main
-          }
+            color: theme.palette.text.main,
+          },
         },
 
         '&:has(img)': {
-          padding: 4
+          padding: 4,
         },
 
         svg: {
-          fontSize: 16
-        }
-      })
+          fontSize: 16,
+        },
+      }),
     },
     [ButtonSizesEnum.Large]: {
       // ??
-    }
+    },
   } as InterpolationMapped<ButtonSizes>;
 
   return styles[$size!];
@@ -116,7 +116,7 @@ export const ButtonFrame = styled.button<StyledButtonProps>`
     css`
       background-color: ${getThemeValue(
         theme.palette,
-        $backgroundColor
+        $backgroundColor,
       )} !important;
     `}
 

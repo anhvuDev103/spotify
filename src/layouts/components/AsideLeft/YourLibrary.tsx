@@ -5,7 +5,7 @@ import {
   CheeseBurgerIcon,
   LibraryIcon,
   PlusIcon,
-  SearchIcon
+  SearchIcon,
 } from '@components/Svg';
 import { YourLibraryFrame } from '@layouts/styles/YourLibrary.styled';
 

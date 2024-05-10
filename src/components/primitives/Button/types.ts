@@ -4,7 +4,7 @@ export enum ButtonVariantsEnum {
   Ghost = 'ghost',
   Emphasize = 'emphasize',
   Icon = 'icon',
-  Clear = 'clear'
+  Clear = 'clear',
 }
 
 export type ButtonVariants = `${ButtonVariantsEnum}`;
@@ -12,7 +12,7 @@ export type ButtonVariants = `${ButtonVariantsEnum}`;
 export enum ButtonSizesEnum {
   Small = 'sm',
   Medium = 'md',
-  Large = 'lg'
+  Large = 'lg',
 }
 
 export type ButtonSizes = `${ButtonSizesEnum}`;

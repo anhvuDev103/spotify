@@ -14,8 +14,8 @@ interface ThemedButtonProps extends StyledPaperProps {
 const getVariantStyle = ({ $variant, theme }: ThemedButtonProps) => {
   const styles = {
     [PaperVariants.Contained]: {
-      backgroundColor: theme.palette.background.paper
-    }
+      backgroundColor: theme.palette.background.paper,
+    },
   } as InterpolationMapped<PaperVariants>;
 
   return styles[$variant!];

@@ -19,16 +19,16 @@ const StackItem: React.FC<StackItemProps> = ({ children, ...props }) => {
 
 StackMain.defaultProps = {
   orientation: 'vertical',
-  as: 'div'
+  as: 'div',
 };
 
 StackItem.defaultProps = {
-  as: 'div'
+  as: 'div',
 };
 
 const Stack = {
   Main: StackMain,
-  Item: StackItem
+  Item: StackItem,
 };
 
 export default Stack;

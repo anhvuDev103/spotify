@@ -1,5 +1,5 @@
 export enum PaperVariants {
-  Contained = 'contained'
+  Contained = 'contained',
 }
 
 export interface PaperProps {
