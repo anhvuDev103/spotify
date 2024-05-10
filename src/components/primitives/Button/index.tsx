@@ -13,6 +13,7 @@ const Button: React.FC<ButtonProps> = ({
   startIcon,
   endIcon,
   hoverScale,
+  backgroundColor,
   ...props
 }) => {
   return (
@@ -21,11 +22,12 @@ const Button: React.FC<ButtonProps> = ({
       $rounded={rounded}
       $size={size}
       $hoverScale={!!hoverScale}
+      $backgroundColor={backgroundColor}
       {...props}
     >
-      {startIcon && <div className='startIcon'>{startIcon}</div>}
+      {startIcon && <div className='icon startIcon'>{startIcon}</div>}
       {children}
-      {endIcon && <div className='endIcon'>{endIcon}</div>}
+      {endIcon && <div className='icon endIcon'>{endIcon}</div>}
     </ButtonFrame>
   );
 };

@@ -17,7 +17,15 @@ export enum ButtonSizesEnum {
 
 export type ButtonSizes = `${ButtonSizesEnum}`;
 
-export interface ButtonProps {
+type ButtonAttrs = Omit<
+  React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >,
+  'size'
+>;
+
+export interface ButtonProps extends ButtonAttrs {
   variant?: ButtonVariants;
   size?: ButtonSizes;
   rounded?: boolean;
@@ -25,6 +33,15 @@ export interface ButtonProps {
   startIcon?: React.ReactElement;
   endIcon?: React.ReactElement;
   hoverScale?: boolean;
+  backgroundColor?: string;
+}
+
+export interface StyledButtonProps extends ButtonAttrs {
+  $variant?: ButtonVariants;
+  $rounded?: boolean;
+  $size?: ButtonSizes;
+  $hoverScale?: boolean;
+  $backgroundColor?: string;
 }
 
 export const DEFAULT_BUTTON_VARIANT = ButtonVariantsEnum.Ghost;

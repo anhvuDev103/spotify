@@ -1,19 +1,14 @@
 import { InterpolationMapped, Theme } from '@styles/theme';
-import styled from 'styled-components';
+import { getThemeValue } from '@utils/common';
+import styled, { css } from 'styled-components';
 
 import {
   ButtonSizes,
   ButtonSizesEnum,
   ButtonVariants,
-  ButtonVariantsEnum
+  ButtonVariantsEnum,
+  StyledButtonProps
 } from './types';
-
-interface StyledButtonProps {
-  $variant?: ButtonVariants;
-  $rounded?: boolean;
-  $size?: ButtonSizes;
-  $hoverScale?: boolean;
-}
 
 interface ThemedButtonProps extends StyledButtonProps {
   theme: Theme;
@@ -39,8 +34,13 @@ const getVariantStyle = ({ $variant, theme }: ThemedButtonProps) => {
       backgroundColor: theme.palette.button.icon.main,
 
       '&:hover': {
-        backgroundColor: theme.palette.button.icon.hover,
-        transition: '500ms'
+        backgroundColor: theme.palette.button.icon.hover
+      },
+
+      img: {
+        width: '100%',
+        height: '100%',
+        borderRadius: '50%'
       }
     },
     [ButtonVariantsEnum.Outline]: {},
@@ -76,9 +76,12 @@ const getSizeStyle = ({ $size, $variant, theme }: ThemedButtonProps) => {
 
         '&:hover': {
           svg: {
-            color: theme.palette.text.main,
-            transition: '500ms'
+            color: theme.palette.text.main
           }
+        },
+
+        '&:has(img)': {
+          padding: 4
         },
 
         svg: {
@@ -108,17 +111,32 @@ export const ButtonFrame = styled.button<StyledButtonProps>`
   ${getSizeStyle}
   ${getVariantStyle}
 
+  ${({ $backgroundColor, theme }) =>
+    !!$backgroundColor &&
+    css`
+      background-color: ${getThemeValue(
+        theme.palette,
+        $backgroundColor
+      )} !important;
+    `}
+
   &:hover {
     transform: ${({ $hoverScale }) => ($hoverScale ? 'scale(1.04)' : 'none')};
   }
 
-  .startIcon,
-  .endIcon {
+  .icon {
     display: flex;
-    margin-left: 4px;
 
     svg {
       font-size: 1.6rem;
     }
+  }
+
+  .startIcon {
+    margin-right: 4px;
+  }
+
+  .endIcon {
+    margin-left: 4px;
   }
 `;
