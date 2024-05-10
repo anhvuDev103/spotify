@@ -2,7 +2,7 @@ import {
   HomeActiveIcon,
   HomeIcon,
   SearchActiveIcon,
-  SearchIcon
+  SearchIcon,
 } from '@components/Svg';
 import Home from '@pages/Home';
 import Search from '@pages/Search';
@@ -14,7 +14,7 @@ export const ROUTES = [
     element: Home,
     icon: HomeIcon,
     iconActive: HomeActiveIcon,
-    navigation: true
+    navigation: true,
   },
   {
     path: '/search',
@@ -22,6 +22,6 @@ export const ROUTES = [
     element: Search,
     icon: SearchIcon,
     iconActive: SearchActiveIcon,
-    navigation: true
-  }
+    navigation: true,
+  },
 ] as const;

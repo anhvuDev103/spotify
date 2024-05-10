@@ -3,5 +3,5 @@ import lodash from 'lodash';
 
 export const getThemeValue = (
   theme: Theme | Theme[keyof Theme],
-  path: string
+  path: string,
 ) => lodash.get(theme, path);

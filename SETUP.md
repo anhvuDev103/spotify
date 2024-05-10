@@ -14,7 +14,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
-    'prettier'
+    'prettier',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -22,33 +22,33 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': [
       'warn',
-      { allowConstantExport: true }
+      { allowConstantExport: true },
     ],
     'prettier/prettier': [
       'warn',
       {
         arrowParens: 'always',
         semi: true,
-        trailingComma: 'none',
+        trailingComma: 'all',
         tabWidth: 2,
         endOfLine: 'auto',
         useTabs: false,
         singleQuote: true,
         printWidth: 80,
-        jsxSingleQuote: true
-      }
+        jsxSingleQuote: true,
+      },
     ],
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-unused-vars': [
       'warn',
       {
         argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_'
-      }
+        varsIgnorePattern: '^_',
+      },
     ],
     'simple-import-sort/imports': 'error',
-    'simple-import-sort/exports': 'error'
-  }
+    'simple-import-sort/exports': 'error',
+  },
 };
 ```
 
@@ -58,7 +58,7 @@ module.exports = {
 {
   "arrowParens": "always",
   "semi": true,
-  "trailingComma": "none",
+  "trailingComma": "all",
   "tabWidth": 2,
   "endOfLine": "auto",
   "useTabs": false,
@@ -135,15 +135,15 @@ export default defineConfig({
         [
           '@swc/plugin-styled-components',
           {
-            displayName: true
-          }
-        ]
-      ]
-    })
+            displayName: true,
+          },
+        ],
+      ],
+    }),
   ],
   resolve: {
-    alias: foldersName
-  }
+    alias: foldersName,
+  },
 });
 ```
 
@@ -217,119 +217,119 @@ export const getDesignTokens = (mode: Mode) => {
         black: '#000000',
         black10: '#0000001a',
         black60: '#00000099',
-        muted: '#00000040'
+        muted: '#00000040',
       },
       success: {
         main: getColor('#4edb95', ''),
         hover: getColor('#4edb9599', ''),
         contrast: getColor('#000000', ''),
-        '60': getColor('#4edb9599', '')
+        '60': getColor('#4edb9599', ''),
       },
       warning: {
         main: getColor('#ffca02', ''),
         hover: getColor('#ffca0299', ''),
-        contrast: getColor('#000000', '')
+        contrast: getColor('#000000', ''),
       },
       danger: {
         main: getColor('#ff5a58', ''),
         hover: getColor('#ff5a5899', ''),
-        contrast: getColor('#ffffff', '')
+        contrast: getColor('#ffffff', ''),
       },
       disabled: {
         main: getColor('#e5e5e5', ''),
         hover: getColor('#e5e5e599', ''),
-        contrast: getColor('#8b8b8b', '')
+        contrast: getColor('#8b8b8b', ''),
       },
       background: {
         default: getColor('#8c87c3', ''),
-        paper: getColor('#ffffff', '')
+        paper: getColor('#ffffff', ''),
       },
       border: {
-        main: getColor('#000000', '')
-      }
+        main: getColor('#000000', ''),
+      },
     },
     typography: {
       bold12: {
         fontSize: '1.2rem',
-        fontWeight: '700'
+        fontWeight: '700',
       },
       semi12: {
         fontSize: '1.2rem',
-        fontWeight: '600'
+        fontWeight: '600',
       },
       medium12: {
         fontSize: '1.2rem',
-        fontWeight: '500'
+        fontWeight: '500',
       },
       light12: {
         fontSize: '1.2rem',
-        fontWeight: '400'
+        fontWeight: '400',
       },
       bold14: {
         fontSize: '1.4rem',
-        fontWeight: '700'
+        fontWeight: '700',
       },
       semi14: {
         fontSize: '1.4rem',
-        fontWeight: '600'
+        fontWeight: '600',
       },
       medium14: {
         fontSize: '1.4rem',
-        fontWeight: '500'
+        fontWeight: '500',
       },
       light14: {
         fontSize: '1.4rem',
-        fontWeight: '400'
+        fontWeight: '400',
       },
       bold16: {
         fontSize: '1.6rem',
-        fontWeight: '700'
+        fontWeight: '700',
       },
       semi16: {
         fontSize: '1.6rem',
-        fontWeight: '600'
+        fontWeight: '600',
       },
       medium16: {
         fontSize: '1.6rem',
-        fontWeight: '500'
+        fontWeight: '500',
       },
       light16: {
         fontSize: '1.6rem',
-        fontWeight: '400'
+        fontWeight: '400',
       },
       bold20: {
         fontSize: '2rem',
-        fontWeight: '700'
+        fontWeight: '700',
       },
       semi20: {
         fontSize: '2rem',
-        fontWeight: '600'
+        fontWeight: '600',
       },
       medium20: {
         fontSize: '2rem',
-        fontWeight: '500'
+        fontWeight: '500',
       },
       light20: {
         fontSize: '2rem',
-        fontWeight: '400'
+        fontWeight: '400',
       },
       bold24: {
         fontSize: '2.4rem',
-        fontWeight: '700'
+        fontWeight: '700',
       },
       semi24: {
         fontSize: '2.4rem',
-        fontWeight: '600'
+        fontWeight: '600',
       },
       medium24: {
         fontSize: '2.4rem',
-        fontWeight: '500'
+        fontWeight: '500',
       },
       light24: {
         fontSize: '2.4rem',
-        fontWeight: '400'
-      }
-    }
+        fontWeight: '400',
+      },
+    },
   };
 };
 

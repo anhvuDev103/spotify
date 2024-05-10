@@ -20,7 +20,7 @@ module.exports = {
       {
         arrowParens: 'always',
         semi: true,
-        trailingComma: 'none',
+        trailingComma: 'all',
         tabWidth: 2,
         endOfLine: 'auto',
         useTabs: false,
