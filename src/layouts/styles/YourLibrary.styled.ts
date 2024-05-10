@@ -79,7 +79,6 @@ export const LibraryItemFrame = styled.div`
 
     position: absolute;
     inset: 0;
-    transition: background-color 200ms;
     z-index: -1;
   }
 
@@ -117,7 +116,7 @@ export const LibraryItemFrame = styled.div`
     }
   }
 
-  .separate {
+  .separator {
     font-size: 0.8rem;
     vertical-align: middle;
   }

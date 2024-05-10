@@ -16,13 +16,11 @@ export const NavigationItem = styled(Stack.Item)`
     .icons {
       svg {
         color: ${({ theme }) => theme.palette.text.main};
-        transition: 200ms;
       }
     }
 
     a {
       color: ${({ theme }) => theme.palette.text.main};
-      transition: 200ms;
     }
   }
 
@@ -70,4 +68,16 @@ export const AsideLeftFrame = styled.section`
   flex-direction: column;
   align-items: stretch;
   gap: 8px;
+`;
+
+export const MainLayoutFrame = styled.main`
+  padding: 8px;
+
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+`;
+
+export const MainContent = styled.section`
+  flex: 1;
 `;

@@ -2,7 +2,7 @@ import { PinIcon } from '@components/Svg';
 import { LibraryItemFrame } from '@layouts/styles/YourLibrary.styled';
 
 const LibraryItem = () => {
-  const separate = '•';
+  const separator = '•';
 
   return (
     <LibraryItemFrame>
@@ -15,7 +15,7 @@ const LibraryItem = () => {
         <h5 className='name'>Liked Songs</h5>
         <div className='info'>
           <PinIcon color='success.main' />
-          Playlist <span className='separate'>{separate}</span> Duc Anh Vu
+          Playlist <span className='separator'>{separator}</span> Duc Anh Vu
         </div>
       </div>
     </LibraryItemFrame>

@@ -1,17 +1,10 @@
-import styled from 'styled-components';
-
 import AsideLeft from './components/AsideLeft';
 import AsideRight from './components/AsideRight';
+import { MainContent, MainLayoutFrame } from './styled';
 
 interface Props {
   children: React.ReactNode;
 }
-
-const MainLayoutFrame = styled.main`
-  padding: 8px;
-`;
-
-const MainContent = styled.section``;
 
 const MainLayout: React.FC<Props> = ({ children }) => {
   return (
