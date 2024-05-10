@@ -62,7 +62,7 @@ export const NavigationListFrame = styled(Paper)`
 `;
 
 export const AsideLeftFrame = styled.section`
-  width: 400px;
+  width: 420px;
 
   display: flex;
   flex-direction: column;

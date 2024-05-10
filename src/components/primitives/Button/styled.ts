@@ -35,6 +35,9 @@ const getVariantStyle = ({ $variant, theme }: ThemedButtonProps) => {
 
       '&:hover': {
         backgroundColor: theme.palette.button.icon.hover,
+        svg: {
+          color: theme.palette.text.main,
+        },
       },
 
       img: {
@@ -74,12 +77,6 @@ const getSizeStyle = ({ $size, $variant, theme }: ThemedButtonProps) => {
         width: 32,
         padding: 8,
 
-        '&:hover': {
-          svg: {
-            color: theme.palette.text.main,
-          },
-        },
-
         '&:has(img)': {
           padding: 4,
         },
@@ -90,7 +87,14 @@ const getSizeStyle = ({ $size, $variant, theme }: ThemedButtonProps) => {
       }),
     },
     [ButtonSizesEnum.Large]: {
-      // ??
+      ...($variant === ButtonVariantsEnum.Icon && {
+        width: 48,
+        padding: 12,
+
+        svg: {
+          fontSize: 24,
+        },
+      }),
     },
   } as InterpolationMapped<ButtonSizes>;
 
@@ -121,7 +125,7 @@ export const ButtonFrame = styled.button<StyledButtonProps>`
     `}
 
   &:hover {
-    transform: ${({ $hoverScale }) => ($hoverScale ? 'scale(1.04)' : 'none')};
+    scale: ${({ $hoverScale }) => ($hoverScale ? 1.04 : 'none')};
   }
 
   .Button-icon {

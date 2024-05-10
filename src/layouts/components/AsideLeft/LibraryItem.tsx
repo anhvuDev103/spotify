@@ -14,7 +14,7 @@ const LibraryItem = () => {
       <div className='LibraryItem-details'>
         <h5 className='LibraryItem-name'>Liked Songs</h5>
         <div className='LibraryItem-info'>
-          <PinIcon color='success.main' />
+          <PinIcon color='primary.main' />
           Playlist <span className='LibraryItem-separator'>
             {separator}
           </span>{' '}

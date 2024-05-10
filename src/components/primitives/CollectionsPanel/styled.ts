@@ -7,6 +7,8 @@ interface StyledCollectionsPanelFrameProps {}
 export const CollectionsPanelFrame = styled(
   Paper,
 )<StyledCollectionsPanelFrameProps>`
+  margin-bottom: 16px;
+
   .CollectionsPanel-head {
     display: flex;
     align-items: center;
