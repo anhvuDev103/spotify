@@ -25,9 +25,11 @@ const Button: React.FC<ButtonProps> = ({
       $backgroundColor={backgroundColor}
       {...props}
     >
-      {startIcon && <div className='icon startIcon'>{startIcon}</div>}
+      {startIcon && (
+        <div className='Button-icon Button-startIcon'>{startIcon}</div>
+      )}
       {children}
-      {endIcon && <div className='icon endIcon'>{endIcon}</div>}
+      {endIcon && <div className='Button-icon Button-endIcon'>{endIcon}</div>}
     </ButtonFrame>
   );
 };

@@ -6,33 +6,39 @@ interface StyledPagePanelFrameProps {}
 
 export const PagePanelFrame = styled(Paper)<StyledPagePanelFrameProps>`
   height: 100%;
+  padding: 0 24px;
 
-  .header {
+  .PagePanel-header {
+  }
+
+  .PagePanel-headerMain {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 16px 24px;
+    min-height: 64px;
   }
 
-  .navigation {
+  .PagePanel-headerBottom {
+  }
+
+  .PagePanel-navigation {
     display: flex;
     align-items: center;
     gap: 8px;
   }
 
-  .user {
+  .PagePanel-user {
     display: flex;
     align-items: center;
     gap: 8px;
   }
 
-  .installBtn {
-    ${({ theme }) => theme.typography.semi14};
+  .PagePanel-installBtn {
+    ${({ theme }) => theme.typography.bold14};
   }
 
-  .content {
+  .PagePanel-content {
     margin-top: 16px;
-    padding: 0 24px;
   }
 `;

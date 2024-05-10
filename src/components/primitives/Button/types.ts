@@ -4,7 +4,7 @@ export enum ButtonVariantsEnum {
   Ghost = 'ghost',
   Emphasize = 'emphasize',
   Icon = 'icon',
-  Clear = 'clear',
+  Text = 'text',
 }
 
 export type ButtonVariants = `${ButtonVariantsEnum}`;

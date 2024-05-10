@@ -1,7 +1,7 @@
 import { StackFrame, StackItemFrame } from './styled';
 import { StackItemProps, StackProps } from './types';
 
-const StackMain: React.FC<StackProps> = ({
+const StackList: React.FC<StackProps> = ({
   orientation,
   children,
   ...props
@@ -17,7 +17,7 @@ const StackItem: React.FC<StackItemProps> = ({ children, ...props }) => {
   return <StackItemFrame {...props}>{children}</StackItemFrame>;
 };
 
-StackMain.defaultProps = {
+StackList.defaultProps = {
   orientation: 'vertical',
   as: 'div',
 };
@@ -27,7 +27,7 @@ StackItem.defaultProps = {
 };
 
 const Stack = {
-  Main: StackMain,
+  List: StackList,
   Item: StackItem,
 };
 

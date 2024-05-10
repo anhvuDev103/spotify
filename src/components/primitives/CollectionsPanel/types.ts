@@ -1,4 +1,4 @@
-export interface PagePanelProps {
+export interface CollectionsPanelProps {
   bottomExtension?: React.ReactElement;
   children: React.ReactNode;
 }

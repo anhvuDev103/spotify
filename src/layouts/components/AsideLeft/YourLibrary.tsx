@@ -1,5 +1,6 @@
 import Badge from '@components/Badge';
 import Button from '@components/primitives/Button';
+import Stack from '@components/primitives/Stack';
 import {
   ArrowRightIcon,
   CheeseBurgerIcon,
@@ -14,12 +15,12 @@ import LibraryItem from './LibraryItem';
 const YourLibrary = () => {
   return (
     <YourLibraryFrame>
-      <div className='heading'>
-        <div className='headingTitle'>
+      <div className='YourLibrary-heading'>
+        <div className='YourLibrary-headingTitle'>
           <LibraryIcon />
           <p>Your Library</p>
         </div>
-        <div className='headingControls'>
+        <div className='YourLibrary-headingControls'>
           <Button variant='icon'>
             <PlusIcon />
           </Button>
@@ -28,25 +29,27 @@ const YourLibrary = () => {
           </Button>
         </div>
       </div>
-      <div className='controls'>
-        <div className='controlsBadges'>
+      <div className='YourLibrary-controls'>
+        <div className='YourLibrary-controlsBadges'>
           <Badge>Playlists</Badge>
           <Badge>Artists</Badge>
           <Badge>Albums</Badge>
         </div>
-        <div className='controlsSearch'>
+        <div className='YourLibrary-controlsSearch'>
           <Button variant='icon'>
             <SearchIcon />
           </Button>
-          <Button variant='clear' hoverScale endIcon={<CheeseBurgerIcon />}>
+          <Button variant='text' hoverScale endIcon={<CheeseBurgerIcon />}>
             Recents
           </Button>
         </div>
       </div>
-      <div className='libraries'>
-        {[...Array(10)].map((_, i) => (
-          <LibraryItem key={i} />
-        ))}
+      <div className='YourLibrary-libraries'>
+        <Stack.List>
+          {[...Array(10)].map((_, i) => (
+            <LibraryItem key={i} />
+          ))}
+        </Stack.List>
       </div>
     </YourLibraryFrame>
   );

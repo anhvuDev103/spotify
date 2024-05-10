@@ -68,7 +68,7 @@ export const getDesignTokens = (mode: Mode) => {
           hover: getColor('#ffffff1a', ''),
           contrast: getColor('#ffffff', ''),
         },
-        clear: {
+        text: {
           main: getColor('transparent', ''),
           hover: getColor('#ffffff12', ''),
           contrast: getColor('#ffffff', ''),
@@ -85,10 +85,6 @@ export const getDesignTokens = (mode: Mode) => {
         fontSize: '1.2rem',
         fontWeight: '700',
       },
-      semi12: {
-        fontSize: '1.2rem',
-        fontWeight: '600',
-      },
       medium12: {
         fontSize: '1.2rem',
         fontWeight: '500',
@@ -100,10 +96,6 @@ export const getDesignTokens = (mode: Mode) => {
       bold14: {
         fontSize: '1.4rem',
         fontWeight: '700',
-      },
-      semi14: {
-        fontSize: '1.4rem',
-        fontWeight: '600',
       },
       medium14: {
         fontSize: '1.4rem',
@@ -117,10 +109,6 @@ export const getDesignTokens = (mode: Mode) => {
         fontSize: '1.6rem',
         fontWeight: '700',
       },
-      semi16: {
-        fontSize: '1.6rem',
-        fontWeight: '600',
-      },
       medium16: {
         fontSize: '1.6rem',
         fontWeight: '500',
@@ -133,10 +121,6 @@ export const getDesignTokens = (mode: Mode) => {
         fontSize: '2rem',
         fontWeight: '700',
       },
-      semi20: {
-        fontSize: '2rem',
-        fontWeight: '600',
-      },
       medium20: {
         fontSize: '2rem',
         fontWeight: '500',
@@ -148,10 +132,6 @@ export const getDesignTokens = (mode: Mode) => {
       bold24: {
         fontSize: '2.4rem',
         fontWeight: '700',
-      },
-      semi24: {
-        fontSize: '2.4rem',
-        fontWeight: '600',
       },
       medium24: {
         fontSize: '2.4rem',

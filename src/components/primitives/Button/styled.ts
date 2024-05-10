@@ -44,14 +44,14 @@ const getVariantStyle = ({ $variant, theme }: ThemedButtonProps) => {
       },
     },
     [ButtonVariantsEnum.Outline]: {},
-    [ButtonVariantsEnum.Clear]: {
-      backgroundColor: theme.palette.button.clear.main,
+    [ButtonVariantsEnum.Text]: {
+      backgroundColor: theme.palette.button.text.main,
 
       '&:hover': {
-        color: theme.palette.button.clear.contrast,
+        color: theme.palette.button.text.contrast,
 
         svg: {
-          color: theme.palette.button.clear.contrast,
+          color: theme.palette.button.text.contrast,
         },
       },
     },
@@ -124,7 +124,7 @@ export const ButtonFrame = styled.button<StyledButtonProps>`
     transform: ${({ $hoverScale }) => ($hoverScale ? 'scale(1.04)' : 'none')};
   }
 
-  .icon {
+  .Button-icon {
     display: flex;
 
     svg {
@@ -132,11 +132,11 @@ export const ButtonFrame = styled.button<StyledButtonProps>`
     }
   }
 
-  .startIcon {
+  .Button-startIcon {
     margin-right: 4px;
   }
 
-  .endIcon {
+  .Button-endIcon {
     margin-left: 4px;
   }
 `;

@@ -6,22 +6,22 @@ import { NavLink } from 'react-router-dom';
 const NavigationList = () => {
   return (
     <NavigationListFrame>
-      <Stack.Main as='nav'>
+      <Stack.List as='nav'>
         {ROUTES.map((route) => {
           const Icon = route.icon;
           const ActiveIcon = route.iconActive;
 
           return (
             <NavigationItem key={route.path}>
-              <div className='icons'>
-                <Icon className='inactiveIcon' />
-                <ActiveIcon className='activeIcon' />
+              <div className='NavigationList-icons'>
+                <Icon className='NavigationList-inactiveIcon' />
+                <ActiveIcon className='NavigationList-activeIcon' />
               </div>
               <NavLink to={route.path}>{route.title}</NavLink>
             </NavigationItem>
           );
         })}
-      </Stack.Main>
+      </Stack.List>
     </NavigationListFrame>
   );
 };

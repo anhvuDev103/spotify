@@ -9,13 +9,16 @@ const LibraryItem = () => {
       <img
         src='https://i2o.scdn.co/image/ab67706c0000cfa39a48455a14b7df88184cd74b'
         alt='FIX_ME'
-        className='thumbnail'
+        className='LibraryItem-thumbnail'
       />
-      <div className='details'>
-        <h5 className='name'>Liked Songs</h5>
-        <div className='info'>
+      <div className='LibraryItem-details'>
+        <h5 className='LibraryItem-name'>Liked Songs</h5>
+        <div className='LibraryItem-info'>
           <PinIcon color='success.main' />
-          Playlist <span className='separator'>{separator}</span> Duc Anh Vu
+          Playlist <span className='LibraryItem-separator'>
+            {separator}
+          </span>{' '}
+          Duc Anh Vu
         </div>
       </div>
     </LibraryItemFrame>

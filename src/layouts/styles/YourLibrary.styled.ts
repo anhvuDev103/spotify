@@ -1,17 +1,18 @@
 import Paper from '@components/primitives/Paper';
+import Stack from '@components/primitives/Stack';
 import styled from 'styled-components';
 
 export const YourLibraryFrame = styled(Paper)`
   border-radius: 8px;
 
-  .heading {
+  .YourLibrary-heading {
     display: flex;
     align-items: center;
 
     padding: 8px 16px;
   }
 
-  .headingTitle {
+  .YourLibrary-headingTitle {
     display: flex;
     align-items: center;
 
@@ -29,7 +30,7 @@ export const YourLibraryFrame = styled(Paper)`
     }
   }
 
-  .headingControls {
+  .YourLibrary-headingControls {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -37,11 +38,11 @@ export const YourLibraryFrame = styled(Paper)`
     margin-left: auto;
   }
 
-  .controls {
+  .YourLibrary-controls {
     margin-bottom: 8px;
   }
 
-  .controlsBadges {
+  .YourLibrary-controlsBadges {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -49,7 +50,7 @@ export const YourLibraryFrame = styled(Paper)`
     margin: 8px 16px;
   }
 
-  .controlsSearch {
+  .YourLibrary-controlsSearch {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -57,12 +58,12 @@ export const YourLibraryFrame = styled(Paper)`
     padding: 2px 4px 0 16px;
   }
 
-  .libraries {
+  .YourLibrary-libraries {
     padding: 0 8px 8px;
   }
 `;
 
-export const LibraryItemFrame = styled.div`
+export const LibraryItemFrame = styled(Stack.Item)`
   padding: 8px;
   border-radius: 6px;
 
@@ -90,24 +91,24 @@ export const LibraryItemFrame = styled.div`
     }
   }
 
-  img.thumbnail {
+  img.LibraryItem-thumbnail {
     width: 48px;
     height: 48px;
     border-radius: 4px;
   }
 
-  .details {
+  .LibraryItem-details {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 2px;
   }
 
-  .name {
+  .LibraryItem-name {
     color: ${({ theme }) => theme.palette.text.main};
   }
 
-  .info {
+  .LibraryItem-info {
     font-size: 1.4rem;
 
     svg {
@@ -116,7 +117,7 @@ export const LibraryItemFrame = styled.div`
     }
   }
 
-  .separator {
+  .LibraryItem-separator {
     font-size: 0.8rem;
     vertical-align: middle;
   }
