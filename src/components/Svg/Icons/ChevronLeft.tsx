@@ -3,10 +3,10 @@ import { SvgProps } from '../types';
 
 const Icon: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   return (
-    <Svg viewBox='0 0 24 24' {...props}>
+    <Svg viewBox='0 0 16 16' {...props}>
       <path
         fill='currentColor'
-        d='m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z'
+        d='M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z'
       ></path>
     </Svg>
   );
