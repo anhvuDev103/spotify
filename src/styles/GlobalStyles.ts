@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
 
-        font-family: 'Circular';
+        font-family: "Open Sans", sans-serif;
         font-weight: normal;
         font-size: 1.6rem;
 
