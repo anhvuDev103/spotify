@@ -22,6 +22,11 @@ export const getDesignTokens = (mode: Mode) => {
         black60: '#00000099',
         muted: '#00000040',
       },
+      primary: {
+        main: getColor('#1ed760', ''),
+        hover: getColor('#1fdf64', ''),
+        contrast: getColor('#000000', ''),
+      },
       success: {
         main: getColor('#1fd75f', ''),
         hover: getColor('#4edb9599', ''),
