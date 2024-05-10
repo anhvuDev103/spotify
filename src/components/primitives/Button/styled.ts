@@ -22,33 +22,36 @@ interface ThemedButtonProps extends StyledButtonProps {
 const getVariantStyle = ({ $variant, theme }: ThemedButtonProps) => {
   const styles = {
     [ButtonVariantsEnum.Ghost]: {
-      backgroundColor: theme.palette.ghost.main,
-      color: theme.palette.ghost.contrast,
+      backgroundColor: theme.palette.button.ghost.main,
+      color: theme.palette.button.ghost.contrast,
 
       '&:hover': {
-        backgroundColor: theme.palette.ghost.hover
+        backgroundColor: theme.palette.button.ghost.hover
       }
     },
 
-    [ButtonVariantsEnum.Contained]: {},
+    [ButtonVariantsEnum.Contained]: {
+      backgroundColor: theme.palette.button.contained.main,
+      color: theme.palette.button.contained.contrast
+    },
     [ButtonVariantsEnum.Emphasize]: {},
     [ButtonVariantsEnum.Icon]: {
-      backgroundColor: 'transparent',
+      backgroundColor: theme.palette.button.icon.main,
 
       '&:hover': {
-        backgroundColor: theme.palette.ghost.main,
+        backgroundColor: theme.palette.button.icon.hover,
         transition: '500ms'
       }
     },
     [ButtonVariantsEnum.Outline]: {},
     [ButtonVariantsEnum.Clear]: {
-      backgroundColor: 'transparent',
+      backgroundColor: theme.palette.button.clear.main,
 
       '&:hover': {
-        color: theme.palette.text.main,
+        color: theme.palette.button.clear.contrast,
 
         svg: {
-          color: theme.palette.text.main
+          color: theme.palette.button.clear.contrast
         }
       }
     }
@@ -109,6 +112,7 @@ export const ButtonFrame = styled.button<StyledButtonProps>`
     transform: ${({ $hoverScale }) => ($hoverScale ? 'scale(1.04)' : 'none')};
   }
 
+  .startIcon,
   .endIcon {
     display: flex;
     margin-left: 4px;

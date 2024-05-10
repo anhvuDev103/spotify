@@ -10,6 +10,7 @@ const Button: React.FC<ButtonProps> = ({
   variant,
   rounded,
   size,
+  startIcon,
   endIcon,
   hoverScale,
   ...props
@@ -22,6 +23,7 @@ const Button: React.FC<ButtonProps> = ({
       $hoverScale={!!hoverScale}
       {...props}
     >
+      {startIcon && <div className='startIcon'>{startIcon}</div>}
       {children}
       {endIcon && <div className='endIcon'>{endIcon}</div>}
     </ButtonFrame>

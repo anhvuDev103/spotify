@@ -22,6 +22,7 @@ export interface ButtonProps {
   size?: ButtonSizes;
   rounded?: boolean;
   children: React.ReactNode;
+  startIcon?: React.ReactElement;
   endIcon?: React.ReactElement;
   hoverScale?: boolean;
 }
