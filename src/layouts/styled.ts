@@ -13,7 +13,7 @@ export const NavigationItem = styled(Stack.Item)`
   cursor: pointer;
 
   &:hover {
-    .NavigationItem-Icon {
+    .icons {
       svg {
         color: ${({ theme }) => theme.palette.text.main};
         transition: 200ms;
@@ -27,16 +27,16 @@ export const NavigationItem = styled(Stack.Item)`
   }
 
   &:has(a.active) {
-    .NavigationItem-Icon_Inactive {
+    .inactiveIcon {
       display: none;
     }
 
-    .NavigationItem-Icon_Active {
+    .activeIcon {
       display: block;
     }
   }
 
-  .NavigationItem-Icon {
+  .icons {
     position: relative;
     width: 24px;
     height: 24px;
@@ -46,7 +46,7 @@ export const NavigationItem = styled(Stack.Item)`
       inset: 0;
     }
 
-    .NavigationItem-Icon_Active {
+    .activeIcon {
       display: none;
     }
   }
