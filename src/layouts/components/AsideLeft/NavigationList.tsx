@@ -13,9 +13,9 @@ const NavigationList = () => {
 
           return (
             <NavigationItem key={route.path}>
-              <div className='NavigationItem-Icon'>
-                <Icon className='NavigationItem-Icon_Inactive' />
-                <ActiveIcon className='NavigationItem-Icon_Active' />
+              <div className='icons'>
+                <Icon className='inactiveIcon' />
+                <ActiveIcon className='activeIcon' />
               </div>
               <NavLink to={route.path}>{route.title}</NavLink>
             </NavigationItem>
