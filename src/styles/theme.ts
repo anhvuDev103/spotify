@@ -23,7 +23,7 @@ export const getDesignTokens = (mode: Mode) => {
         muted: '#00000040'
       },
       success: {
-        main: getColor('#4edb95', ''),
+        main: getColor('#1fd75f', ''),
         hover: getColor('#4edb9599', ''),
         contrast: getColor('#000000', ''),
         '60': getColor('#4edb9599', '')
@@ -58,6 +58,9 @@ export const getDesignTokens = (mode: Mode) => {
       text: {
         main: getColor('#ffffff', ''),
         muted: getColor('#b3b3b3', '')
+      },
+      action: {
+        hover: getColor('#1a1a1a', '')
       }
     },
     typography: {

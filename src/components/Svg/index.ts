@@ -11,6 +11,7 @@ export { default as HomeActiveIcon } from './Icons/HomeActive';
 export { default as LibraryIcon } from './Icons/Library';
 export { default as NoteIcon } from './Icons/Note';
 export { default as PauseIcon } from './Icons/Pause';
+export { default as PinIcon } from './Icons/Pin';
 export { default as PlusIcon } from './Icons/Plus';
 export { default as PlusCircleIcon } from './Icons/PlusCircle';
 export { default as SearchIcon } from './Icons/Search';

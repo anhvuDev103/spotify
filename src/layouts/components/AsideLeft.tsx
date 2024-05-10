@@ -1,16 +1,7 @@
-import styled from 'styled-components';
+import { AsideLeftFrame } from '@layouts/styled';
 
 import NavigationList from './NavigationList';
 import YourLibrary from './YourLibrary';
-
-const AsideLeftFrame = styled.section`
-  width: 400px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 8px;
-`;
 
 const AsideLeft = () => {
   return (
