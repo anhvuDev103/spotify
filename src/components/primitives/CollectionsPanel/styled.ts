@@ -39,5 +39,7 @@ export const CollectionsPanelFrame = styled(
   .CollectionsPanel-content {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+
+    margin-inline: -12px;
   }
 `;

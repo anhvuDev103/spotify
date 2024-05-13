@@ -1,5 +1,6 @@
 import AsideLeft from './components/AsideLeft';
 import AsideRight from './components/AsideRight';
+import PlayerControl from './components/PlayerControl';
 import { MainContent, MainLayoutFrame } from './styled';
 
 interface Props {
@@ -12,6 +13,7 @@ const MainLayout: React.FC<Props> = ({ children }) => {
       <AsideLeft />
       <MainContent>{children}</MainContent>
       <AsideRight />
+      <PlayerControl />
     </MainLayoutFrame>
   );
 };

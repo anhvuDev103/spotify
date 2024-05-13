@@ -6,9 +6,9 @@ interface StyledPagePanelFrameProps {}
 
 export const PagePanelFrame = styled(Paper)<StyledPagePanelFrameProps>`
   height: 100%;
-  padding: 0 24px;
 
   .PagePanel-header {
+    padding: 0 24px;
   }
 
   .PagePanel-headerMain {
@@ -39,6 +39,7 @@ export const PagePanelFrame = styled(Paper)<StyledPagePanelFrameProps>`
   }
 
   .PagePanel-content {
+    padding: 0 24px;
     margin-top: 16px;
   }
 `;

@@ -3,7 +3,15 @@ import Stack from '@components/primitives/Stack';
 import styled from 'styled-components';
 
 export const YourLibraryFrame = styled(Paper)`
+  flex: 1;
+
   border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  overflow-y: hidden;
 
   .YourLibrary-heading {
     display: flex;
@@ -38,28 +46,36 @@ export const YourLibraryFrame = styled(Paper)`
     margin-left: auto;
   }
 
-  .YourLibrary-controls {
+  .YourLibrary-head {
     margin-bottom: 8px;
   }
 
-  .YourLibrary-controlsBadges {
+  .YourLibrary-headBadges {
     display: flex;
     align-items: center;
     gap: 8px;
 
-    margin: 8px 16px;
+    margin: 8px 16px 0;
   }
 
-  .YourLibrary-controlsSearch {
+  .YourLibrary-librariesSearch {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 2px 4px 0 16px;
+    padding: 2px 12px 0 8px;
   }
 
   .YourLibrary-libraries {
-    padding: 0 8px 8px;
+    padding: 0 0 8px 8px;
+
+    flex: 1;
+
+    overflow: hidden;
+  }
+
+  .YourLibrary-librariesList {
+    padding-right: 8px;
   }
 `;
 

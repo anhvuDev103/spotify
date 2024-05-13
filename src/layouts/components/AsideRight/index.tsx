@@ -1,5 +1,7 @@
+import { AsideRightFrame } from '@layouts/styled';
+
 const AsideRight = () => {
-  return <div></div>;
+  return <AsideRightFrame>AsideRight</AsideRightFrame>;
 };
 
 export default AsideRight;

@@ -1,3 +1,5 @@
+import 'overlayscrollbars/styles/overlayscrollbars.css';
+
 import { ROUTES } from '@constants/app';
 import MainLayout from '@layouts/MainLayout';
 import GlobalStyles from '@styles/GlobalStyles';

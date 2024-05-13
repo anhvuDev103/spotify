@@ -19,7 +19,7 @@ const Home = () => {
     >
       <HomeFrame>
         <RecentPlaylists />
-        {[...Array(5)].map((__, k) => (
+        {[...Array(2)].map((__, k) => (
           <CollectionsPanel key={k}>
             {[...Array(7)].map((_, i) => (
               <Collection key={i} />

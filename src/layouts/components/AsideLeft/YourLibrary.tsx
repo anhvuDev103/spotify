@@ -9,6 +9,7 @@ import {
   SearchIcon,
 } from '@components/Svg';
 import { YourLibraryFrame } from '@layouts/styles/YourLibrary.styled';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 import LibraryItem from './LibraryItem';
 
@@ -29,27 +30,37 @@ const YourLibrary = () => {
           </Button>
         </div>
       </div>
-      <div className='YourLibrary-controls'>
-        <div className='YourLibrary-controlsBadges'>
+      <div className='YourLibrary-head'>
+        <div className='YourLibrary-headBadges'>
           <Badge>Playlists</Badge>
           <Badge>Artists</Badge>
           <Badge>Albums</Badge>
         </div>
-        <div className='YourLibrary-controlsSearch'>
-          <Button variant='icon'>
-            <SearchIcon />
-          </Button>
-          <Button variant='text' hoverScale endIcon={<CheeseBurgerIcon />}>
-            Recents
-          </Button>
-        </div>
       </div>
       <div className='YourLibrary-libraries'>
-        <Stack.List>
-          {[...Array(10)].map((_, i) => (
-            <LibraryItem key={i} />
-          ))}
-        </Stack.List>
+        <OverlayScrollbarsComponent
+          className='overlayscrollbars-react'
+          options={{
+            scrollbars: {
+              autoHide: 'move',
+            },
+          }}
+          defer
+        >
+          <div className='YourLibrary-librariesSearch'>
+            <Button variant='icon'>
+              <SearchIcon />
+            </Button>
+            <Button variant='text' hoverScale endIcon={<CheeseBurgerIcon />}>
+              Recents
+            </Button>
+          </div>
+          <Stack.List className='YourLibrary-librariesList'>
+            {[...Array(27)].map((_, i) => (
+              <LibraryItem key={i} num={i} />
+            ))}
+          </Stack.List>
+        </OverlayScrollbarsComponent>
       </div>
     </YourLibraryFrame>
   );

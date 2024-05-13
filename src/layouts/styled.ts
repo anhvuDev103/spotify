@@ -68,16 +68,28 @@ export const AsideLeftFrame = styled.section`
   flex-direction: column;
   align-items: stretch;
   gap: 8px;
+
+  overflow-y: hidden;
 `;
 
 export const MainLayoutFrame = styled.main`
+  height: 100%;
   padding: 8px;
 
-  display: flex;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 1fr auto;
   gap: 8px;
 `;
 
-export const MainContent = styled.section`
-  flex: 1;
+export const MainContent = styled.section``;
+
+export const AsideRightFrame = styled.section`
+  width: 420px;
+`;
+
+export const PlayerControlFrame = styled.section`
+  height: 72px;
+
+  grid-column: 1/4;
 `;

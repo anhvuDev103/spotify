@@ -1,7 +1,7 @@
 import { PinIcon } from '@components/Svg';
 import { LibraryItemFrame } from '@layouts/styles/YourLibrary.styled';
 
-const LibraryItem = () => {
+const LibraryItem = ({ num }: { num: number }) => {
   const separator = '•';
 
   return (
@@ -12,7 +12,7 @@ const LibraryItem = () => {
         className='LibraryItem-thumbnail'
       />
       <div className='LibraryItem-details'>
-        <h5 className='LibraryItem-name'>Liked Songs</h5>
+        <h5 className='LibraryItem-name'>{num}. Liked Songs</h5>
         <div className='LibraryItem-info'>
           <PinIcon color='primary.main' />
           Playlist <span className='LibraryItem-separator'>
