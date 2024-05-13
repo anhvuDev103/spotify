@@ -1,5 +1,6 @@
 import Badge from '@components/Badge';
 import Button from '@components/primitives/Button';
+import ScrollArea from '@components/primitives/ScrollArea';
 import Stack from '@components/primitives/Stack';
 import {
   ArrowRightIcon,
@@ -9,7 +10,6 @@ import {
   SearchIcon,
 } from '@components/Svg';
 import { YourLibraryFrame } from '@layouts/styles/YourLibrary.styled';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 import LibraryItem from './LibraryItem';
 
@@ -38,15 +38,7 @@ const YourLibrary = () => {
         </div>
       </div>
       <div className='YourLibrary-libraries'>
-        <OverlayScrollbarsComponent
-          className='overlayscrollbars-react'
-          options={{
-            scrollbars: {
-              autoHide: 'move',
-            },
-          }}
-          defer
-        >
+        <ScrollArea>
           <div className='YourLibrary-librariesSearch'>
             <Button variant='icon'>
               <SearchIcon />
@@ -60,7 +52,7 @@ const YourLibrary = () => {
               <LibraryItem key={i} num={i} />
             ))}
           </Stack.List>
-        </OverlayScrollbarsComponent>
+        </ScrollArea>
       </div>
     </YourLibraryFrame>
   );

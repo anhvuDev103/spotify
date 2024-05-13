@@ -82,7 +82,9 @@ export const MainLayoutFrame = styled.main`
   gap: 8px;
 `;
 
-export const MainContent = styled.section``;
+export const MainContent = styled.section`
+  overflow: hidden;
+`;
 
 export const AsideRightFrame = styled.section`
   width: 420px;

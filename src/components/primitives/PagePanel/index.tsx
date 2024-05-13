@@ -6,6 +6,7 @@ import {
 } from '@components/Svg';
 
 import Button from '../Button';
+import ScrollArea from '../ScrollArea';
 import { PagePanelFrame } from './styled';
 import { PagePanelProps } from './types';
 
@@ -62,7 +63,9 @@ const PagePanel: React.FC<PagePanelProps> = ({ bottomExtension, children }) => {
           <div className='PagePanel-headerBottom'>{bottomExtension}</div>
         )}
       </div>
-      <div className='PagePanel-content'>{children}</div>
+      <div className='PagePanel-content'>
+        <ScrollArea>{children}</ScrollArea>
+      </div>
     </PagePanelFrame>
   );
 };

@@ -19,7 +19,7 @@ const Home = () => {
     >
       <HomeFrame>
         <RecentPlaylists />
-        {[...Array(2)].map((__, k) => (
+        {[...Array(20)].map((__, k) => (
           <CollectionsPanel key={k}>
             {[...Array(7)].map((_, i) => (
               <Collection key={i} />
@@ -36,6 +36,8 @@ const HomeFrame = styled.div`
   flex-direction: column;
   align-items: stretch;
   gap: 24px;
+
+  padding: 0 24px;
 `;
 
 const CategoryFilter = styled.div`

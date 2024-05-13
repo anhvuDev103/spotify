@@ -58,7 +58,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
 
-    .overlayscrollbars-react {
+    .ScrollArea {
         width: 100%;
         height: 100%;
         overflow: auto;
