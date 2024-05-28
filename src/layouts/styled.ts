@@ -5,7 +5,6 @@ import styled from 'styled-components';
 export const NavigationItem = styled(Stack.Item)`
   display: flex;
   align-items: center;
-  gap: 20px;
 
   height: 48px;
   padding: 0 12px;
@@ -32,6 +31,14 @@ export const NavigationItem = styled(Stack.Item)`
     .NavigationList-activeIcon {
       display: block;
     }
+  }
+
+  .NavigationList-link {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
 
   .NavigationList-icons {
@@ -86,8 +93,63 @@ export const MainContent = styled.section`
   overflow: hidden;
 `;
 
-export const AsideRightFrame = styled.section`
+export const AsideRightFrame = styled(Paper)`
   width: 420px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  overflow: hidden;
+
+  .AsideRight-head {
+    min-height: 48px;
+    margin: 8px 0;
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .AsideRight-label {
+    color: ${({ theme }) => theme.palette.text.main};
+
+    ${({ theme }) => theme.typography.bold14};
+  }
+
+  .AsideRight-inQueue {
+    padding: 0 0 16px 16px;
+
+    overflow: hidden;
+  }
+
+  .AsideRight-inQueueContent {
+    padding-right: 8px;
+  }
+
+  .AsideRight-inQueueNowPlaying {
+  }
+
+  .AsideRight-listLabel {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: ${({ theme }) => theme.palette.text.main};
+
+    ${({ theme }) => theme.typography.bold14};
+  }
+
+  .AsideRight-clearQueueBtn {
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: 16px;
+  }
+
+  .AsideRight-inQueueList {
+  }
 `;
 
 export const PlayerControlFrame = styled.section`

@@ -1,9 +1,6 @@
-export type Orientation = 'horizontal' | 'vertical';
+import { DivAttrs } from '@utils/types';
 
-type DivAttrs = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
->;
+export type Orientation = 'horizontal' | 'vertical';
 
 export interface StackProps extends DivAttrs {
   orientation?: Orientation;

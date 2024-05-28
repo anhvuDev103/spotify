@@ -6,6 +6,7 @@ export { default as CheeseBurgerIcon } from './Icons/CheeseBurger';
 export { default as ChevronLeftIcon } from './Icons/ChevronLeft';
 export { default as ChevronRightIcon } from './Icons/ChevronRight';
 export { default as ClockIcon } from './Icons/Clock';
+export { default as CloseIcon } from './Icons/Close';
 export { default as HomeIcon } from './Icons/Home';
 export { default as HomeActiveIcon } from './Icons/HomeActive';
 export { default as LibraryIcon } from './Icons/Library';
