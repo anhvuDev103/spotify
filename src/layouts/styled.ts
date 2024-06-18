@@ -1,5 +1,6 @@
 import Paper from '@components/primitives/Paper';
 import Stack from '@components/primitives/Stack';
+import { SongFrame } from '@components/Song/styled';
 import styled from 'styled-components';
 
 export const NavigationItem = styled(Stack.Item)`
@@ -119,13 +120,11 @@ export const AsideRightFrame = styled(Paper)`
   }
 
   .AsideRight-inQueue {
-    padding: 0 0 16px 16px;
-
     overflow: hidden;
   }
 
   .AsideRight-inQueueContent {
-    padding-right: 8px;
+    padding: 0 8px 8px 16px;
   }
 
   .AsideRight-inQueueNowPlaying {
@@ -152,8 +151,89 @@ export const AsideRightFrame = styled(Paper)`
   }
 `;
 
-export const PlayerControlFrame = styled.section`
+export const PlayerPanelFrame = styled.section`
   height: 72px;
 
   grid-column: 1/4;
+
+  display: flex;
+  align-items: center;
+`;
+
+export const CurrentSongFrame = styled.div`
+  width: 30%;
+`;
+
+export const CurrentSong = styled.div`
+  display: flex;
+  align-items: center;
+
+  ${SongFrame} {
+    padding: 0 0 0 8px;
+    margin-right: 8px;
+  }
+
+  .Song-thumbnail {
+    width: 56px;
+    height: 56px;
+  }
+
+  .Song-artists {
+    ${({ theme }) => theme.typography.regular12};
+  }
+
+  .PlayingSong-addToPlaylistBtn {
+    &:hover {
+      background-color: inherit;
+
+      svg {
+        color: ${({ theme }) => theme.palette.primary.main};
+      }
+    }
+  }
+`;
+
+export const ControlsFrame = styled.div`
+  max-width: 722px;
+  width: 40%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  .ControlsFrame-controlBtns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ControlsFrame-controlBtn {
+    &:not(.ControlsFrame-togglePlayBtn):hover {
+      background-color: initial;
+    }
+  }
+
+  .ControlsFrame-togglePlayBtn {
+    background-color: ${({ theme }) =>
+      theme.palette.contrast.contrast0.background};
+
+    svg {
+      color: ${({ theme }) => theme.palette.contrast.contrast0.text};
+    }
+  }
+`;
+
+export const FeaturesFrame = styled.div`
+  width: 30%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .FeaturesFrame-featureBtn {
+    &:hover {
+      background-color: initial;
+    }
+  }
 `;

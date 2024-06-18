@@ -10,6 +10,7 @@ const InQueueSong: React.FC<Props> = () => {
 
 const InQueueSongFrame = styled(Song)`
   position: relative;
+  margin-inline: -8px 0;
 
   &::after {
     content: '';
@@ -30,6 +31,9 @@ const InQueueSongFrame = styled(Song)`
       content: '';
 
       background-color: #00000099;
+
+      position: absolute;
+      inset: 0;
     }
 
     .Song-icon {
@@ -39,6 +43,7 @@ const InQueueSongFrame = styled(Song)`
 
   .Song-icon {
     opacity: 0;
+    z-index: 1;
   }
 `;
 

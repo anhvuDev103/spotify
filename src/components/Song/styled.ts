@@ -35,6 +35,7 @@ export const SongFrame = styled.div<StyledSongFrameProps>`
     transform: translate(-50%, -50%);
 
     color: ${({ theme }) => theme.palette.text.main};
+    opacity: 0;
   }
 
   .Song-playIcon {
@@ -58,5 +59,11 @@ export const SongFrame = styled.div<StyledSongFrameProps>`
 
   .Song-artists {
     ${({ theme }) => theme.typography.regular14};
+
+    &:hover {
+      text-decoration: underline;
+
+      cursor: pointer;
+    }
   }
 `;
