@@ -1,17 +1,37 @@
-import { createContext } from 'react';
+import AuthService from '@services/AuthService';
+import { createContext, useContext } from 'react';
+import invariant from 'tiny-invariant';
 
 interface SharedServicesProviderProps {
   children?: React.ReactNode;
 }
 
-interface SharedServicesContextType {}
+interface SharedServicesContextType {
+  authService: AuthService;
+}
 
-const SharedServices = createContext<SharedServicesContextType>({});
+const SharedServicesContext = createContext<SharedServicesContextType | null>(
+  null,
+);
 
 export const SharedServicesProvider: React.FC<SharedServicesProviderProps> = ({
   children,
 }) => {
+  const authService = new AuthService();
   return (
-    <SharedServices.Provider value={{}}>{children}</SharedServices.Provider>
+    <SharedServicesContext.Provider value={{ authService }}>
+      {children}
+    </SharedServicesContext.Provider>
   );
+};
+
+export const useSharedServices = () => {
+  const context = useContext(SharedServicesContext);
+
+  invariant(
+    context,
+    'Component should be wrapped inside <SharedServicesProvider/>',
+  );
+
+  return context;
 };

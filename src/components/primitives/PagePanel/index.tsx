@@ -4,6 +4,8 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from '@components/Svg';
+import { useSharedServices } from '@hooks/providers/useSharedServicesProvider';
+import { Link } from 'react-router-dom';
 
 import Button from '../Button';
 import ScrollArea from '../ScrollArea';
@@ -11,6 +13,9 @@ import { PagePanelFrame } from './styled';
 import { PagePanelProps } from './types';
 
 const PagePanel: React.FC<PagePanelProps> = ({ bottomExtension, children }) => {
+  const { authService } = useSharedServices();
+  const oauthUrl = authService.getOauthUrl();
+
   return (
     <PagePanelFrame>
       <div className='PagePanel-header'>
@@ -57,6 +62,7 @@ const PagePanel: React.FC<PagePanelProps> = ({ bottomExtension, children }) => {
                 src='https://i2o.scdn.co/image/ab67706c0000cfa39a48455a14b7df88184cd74b'
               />
             </Button>
+            <Link to={oauthUrl}>Za chon day</Link>
           </div>
         </div>
         {bottomExtension && (
