@@ -1,4 +1,5 @@
 import PagePanel from '@components/primitives/PagePanel';
+import { memo } from 'react';
 import styled from 'styled-components';
 
 const Search = () => {
@@ -13,4 +14,4 @@ const Search = () => {
 
 const SearchFrame = styled.div``;
 
-export default Search;
+export default memo(Search);

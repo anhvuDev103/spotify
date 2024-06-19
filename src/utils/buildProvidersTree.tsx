@@ -1,15 +1,16 @@
-type ProviderProps = Record<string, unknown>;
+type ProvidersType = [React.ElementType, Record<string, unknown>?];
+type ChildrenType = {
+  children: Array<React.ElementType>;
+};
 
-const buildProvidersTree = (
-  componentsWithProps: [React.FC<ProviderProps>, ProviderProps?][],
-) => {
-  const initialComponent: React.FC<{ children: React.ReactNode }> = ({
-    children,
-  }) => <>{children}</>;
-
+const buildProvidersTree = (componentsWithProps: Array<ProvidersType>) => {
+  const initialComponent = ({ children }: ChildrenType) => <>{children}</>;
   return componentsWithProps.reduce(
-    (AccumulatedComponents, [Provider, props = {}]) => {
-      return ({ children }) => {
+    (
+      AccumulatedComponents: React.ElementType,
+      [Provider, props = {}]: ProvidersType,
+    ) => {
+      return ({ children }: ChildrenType) => {
         return (
           <AccumulatedComponents>
             <Provider {...props}>{children}</Provider>

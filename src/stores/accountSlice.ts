@@ -1,12 +1,19 @@
+import cookieService from '@services/CookieService';
 import { StateCreator } from 'zustand';
 
 import { RootStore } from './root';
 
-export interface AccountSlice {
-  account: string;
+export interface AuthSlice {
+  accessToken: string | undefined;
+  refreshToken: string | undefined;
+
+  setAccessToken: (token: string | undefined) => void;
+  setRefreshToken: (token: string | undefined) => void;
+  initTokens: () => void;
+  clearTokens: () => void;
 }
 
-export const createAccountSlice: StateCreator<
+export const createAuthSlice: StateCreator<
   RootStore,
   [
     ['zustand/devtools', never],
@@ -14,9 +21,33 @@ export const createAccountSlice: StateCreator<
     ['zustand/immer', never],
   ],
   [],
-  AccountSlice
-> = () => {
+  AuthSlice
+> = (set, get) => {
   return {
-    account: 'ahihi',
+    accessToken: undefined,
+    refreshToken: undefined,
+
+    setAccessToken: (token) => {
+      set({
+        accessToken: token,
+      });
+    },
+    setRefreshToken: (token) => {
+      set({
+        refreshToken: token,
+      });
+    },
+    initTokens: () => {
+      const { setAccessToken, setRefreshToken } = get();
+
+      setAccessToken(cookieService.get('access_token'));
+      setRefreshToken(cookieService.get('refresh_token'));
+    },
+    clearTokens: () => {
+      set({
+        accessToken: undefined,
+        refreshToken: undefined,
+      });
+    },
   };
 };
