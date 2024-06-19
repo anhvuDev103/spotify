@@ -14,19 +14,24 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.45.1",
+    "axios": "^1.7.2",
     "classnames": "^2.5.1",
+    "immer": "^10.1.1",
     "lodash": "^4.17.21",
     "overlayscrollbars": "^2.8.0",
     "overlayscrollbars-react": "^0.5.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
     "@swc/plugin-styled-components": "^1.5.122",
+    "@tanstack/eslint-plugin-query": "^5.43.1",
     "@types/lodash": "^4.17.0",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.66",
