@@ -2,14 +2,12 @@ import Badge from '@components/Badge';
 import Collection from '@components/Collection';
 import CollectionsPanel from '@components/primitives/CollectionsPanel';
 import PagePanel from '@components/primitives/PagePanel';
-import useUserSummary from '@hooks/useUserSummary';
 import { memo } from 'react';
 import styled from 'styled-components';
 
 import RecentPlaylists from './RecentPlaylists';
 
 const Home = () => {
-  const query = useUserSummary();
   return (
     <PagePanel
       bottomExtension={

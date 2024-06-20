@@ -12,8 +12,8 @@ const ProvidersTree = buildProvidersTree([
       client: queryClient,
     },
   ],
-  [AppDataProvider],
   [SharedServicesProvider],
+  [AppDataProvider],
 ]);
 
 export default ProvidersTree;

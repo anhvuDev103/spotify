@@ -89,6 +89,11 @@ export const getDesignTokens = (mode: Mode) => {
           hover: getColor('#ffffff12', ''),
           contrast: getColor('#ffffff', ''),
         },
+        emphasize: {
+          main: getColor('#ffffff', ''),
+          hover: getColor('#b7b7b7', ''),
+          contrast: getColor('#000000', ''),
+        },
       },
     },
     typography: {

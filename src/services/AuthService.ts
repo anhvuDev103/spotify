@@ -12,6 +12,7 @@ const SCOPE = [
   //users
   'user-read-private',
   'user-read-email',
+  'user-follow-read',
 ];
 
 class AuthService {

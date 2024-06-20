@@ -17,7 +17,6 @@ export { default as MicroIcon } from './Icons/Micro';
 export { default as NoteIcon } from './Icons/Note';
 export { default as PauseIcon } from './Icons/Pause';
 export { default as PictureInPictureIcon } from './Icons/PictureInPicture';
-export { default as PinIcon } from './Icons/Pin';
 export { default as PlayIcon } from './Icons/Play';
 export { default as PlayingViewIcon } from './Icons/PlayingView';
 export { default as PlusIcon } from './Icons/Plus';

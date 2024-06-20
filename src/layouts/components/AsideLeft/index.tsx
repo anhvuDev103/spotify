@@ -1,4 +1,5 @@
 import { AsideLeftFrame } from '@layouts/styled';
+import { memo } from 'react';
 
 import NavigationList from './NavigationList';
 import YourLibrary from './YourLibrary';
@@ -12,4 +13,4 @@ const AsideLeft = () => {
   );
 };
 
-export default AsideLeft;
+export default memo(AsideLeft);

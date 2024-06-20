@@ -3,16 +3,13 @@ import { useQuery } from '@tanstack/react-query';
 
 import { useSharedServices } from './providers/useSharedServicesProvider';
 
-const useUserPlaylists = () => {
+const useCurrentUserPlaylists = () => {
   const { uiUserService } = useSharedServices();
 
   return useQuery({
     queryKey: queryKeysFactory.getCurrentUserPlaylists,
     queryFn: () => uiUserService.getCurrentUserPlaylists(),
-    select: (data) => {
-      console.log('>> Check | data:', data);
-    },
   });
 };
 
-export default useUserPlaylists;
+export default useCurrentUserPlaylists;

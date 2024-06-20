@@ -1,4 +1,5 @@
 import { PlayerPanelFrame } from '@layouts/styled';
+import { memo } from 'react';
 
 import Controls from './Controls';
 import Features from './Features';
@@ -14,4 +15,4 @@ const PlayerPanel = () => {
   );
 };
 
-export default PlayerPanel;
+export default memo(PlayerPanel);

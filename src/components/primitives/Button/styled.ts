@@ -29,7 +29,10 @@ const getVariantStyle = ({ $variant, theme }: ThemedButtonProps) => {
       backgroundColor: theme.palette.button.contained.main,
       color: theme.palette.button.contained.contrast,
     },
-    [ButtonVariantsEnum.Emphasize]: {},
+    [ButtonVariantsEnum.Emphasize]: {
+      backgroundColor: theme.palette.button.emphasize.main,
+      color: theme.palette.button.emphasize.contrast,
+    },
     [ButtonVariantsEnum.Icon]: {
       backgroundColor: theme.palette.button.icon.main,
 

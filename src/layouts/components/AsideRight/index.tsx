@@ -3,6 +3,7 @@ import ScrollArea from '@components/primitives/ScrollArea';
 import Stack from '@components/primitives/Stack';
 import { CloseIcon } from '@components/Svg';
 import { AsideRightFrame } from '@layouts/styled';
+import { memo } from 'react';
 
 import InQueueSong from './InQueueSong';
 
@@ -45,4 +46,4 @@ const AsideRight = () => {
   );
 };
 
-export default AsideRight;
+export default memo(AsideRight);

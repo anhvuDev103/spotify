@@ -6,30 +6,40 @@ class Http {
 
   constructor() {
     this.instance = axios.create({
-      baseURL: import.meta.env.BACKEND_CLIENT,
+      baseURL: 'https://api.spotify.com/v1',
       timeout: 10000,
       headers: { 'Content-Type': 'application/json' },
     });
 
-    this.instance.interceptors.request.use((request) => {
-      const accessToken = cookieService.get('access_token');
+    this.instance.interceptors.request.use(
+      (request) => {
+        const accessToken = cookieService.get('access_token');
 
-      const headers = {
-        ...request.headers,
-        Authorization: 'Bearer ' + accessToken,
-      } as AxiosRequestHeaders;
+        const headers = {
+          ...request.headers,
+          Authorization: 'Bearer ' + accessToken,
+        } as AxiosRequestHeaders;
 
-      request = {
-        ...request,
-        headers,
-      };
+        request = {
+          ...request,
+          headers,
+        };
 
-      return request;
-    });
+        return request;
+      },
+      (error) => {
+        return Promise.reject(error);
+      },
+    );
 
-    this.instance.interceptors.response.use((response) => {
-      return response.data;
-    });
+    this.instance.interceptors.response.use(
+      (response) => {
+        return response.data;
+      },
+      (error) => {
+        return Promise.reject(error);
+      },
+    );
   }
 }
 
