@@ -1,3 +1,5 @@
+import { ForwardedRef, forwardRef } from 'react';
+
 import { ButtonFrame } from './styled';
 import {
   ButtonProps,
@@ -5,17 +7,20 @@ import {
   DEFAULT_BUTTON_VARIANT,
 } from './types';
 
-const Button: React.FC<ButtonProps> = ({
-  children,
-  variant,
-  rounded,
-  size,
-  startIcon,
-  endIcon,
-  hoverScale,
-  backgroundColor,
-  ...props
-}) => {
+const Button = (
+  {
+    children,
+    variant = DEFAULT_BUTTON_VARIANT,
+    rounded = true,
+    size = DEFAULT_BUTTON_SIZE,
+    startIcon,
+    endIcon,
+    hoverScale,
+    backgroundColor,
+    ...props
+  }: ButtonProps,
+  ref: ForwardedRef<HTMLButtonElement>,
+) => {
   return (
     <ButtonFrame
       $variant={variant}
@@ -23,6 +28,7 @@ const Button: React.FC<ButtonProps> = ({
       $size={size}
       $hoverScale={!!hoverScale}
       $backgroundColor={backgroundColor}
+      ref={ref}
       {...props}
     >
       {startIcon && (
@@ -34,10 +40,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-Button.defaultProps = {
-  rounded: true,
-  variant: DEFAULT_BUTTON_VARIANT,
-  size: DEFAULT_BUTTON_SIZE,
-};
-
-export default Button;
+export default forwardRef(Button);

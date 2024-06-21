@@ -2,20 +2,25 @@ import Badge from '@components/Badge';
 import Button from '@components/primitives/Button';
 import Input from '@components/primitives/Input';
 import ScrollArea from '@components/primitives/ScrollArea';
-import Stack from '@components/primitives/Stack';
 import {
   ArrowRightIcon,
-  CheeseBurgerIcon,
   CloseIcon,
   LibraryIcon,
-  PlusIcon,
   SearchIcon,
 } from '@components/Svg';
 import { useAppDataProvider } from '@hooks/providers/useAppDataProvider';
+import useDebounceValue from '@hooks/useDebounceValue';
 import { YourLibraryFrame } from '@layouts/styles/YourLibrary.styled';
-import { Artist, Playlist, SavedAlbum } from '@spotify/web-api-ts-sdk';
+import CreateNew from '@popups/CreateNew';
+import LibraryFilter, { VIEW_AS_OPTIONS } from '@popups/LibraryFilter';
+import { Artist, Playlist } from '@spotify/web-api-ts-sdk';
+import { formatAndSortLibraryItem } from '@utils/formatters/library';
+import { FormattedSavedAlbum } from '@utils/formatters/user';
+import { PopoverOptionType } from '@utils/types';
 import { clsx } from 'clsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
+
+import YourLibraryList from './YourLibraryList';
 
 export enum LibraryFilterType {
   Playlists = 'Playlists',
@@ -23,18 +28,46 @@ export enum LibraryFilterType {
   Albums = 'Albums',
 }
 
+export enum LibrarySortBy {
+  Recents = 'Recents',
+  RecentlyAdded = 'Recently Added',
+  Alphabetical = 'Alphabetical',
+  Creator = 'Creator',
+}
+
+export enum ViewAsOptionLabel {
+  Compact = 'Compact',
+  List = 'List',
+  Grid = 'Grid',
+}
+
+export type ViewAsOption = PopoverOptionType<ViewAsOptionLabel>;
+
+export interface YourLibraryItemProps {
+  viewType: ViewAsOption;
+}
+
 const YourLibrary = () => {
   const { user } = useAppDataProvider();
 
   const [isShowSearchBox, setIsShowSearchBox] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [filterSelected, setFilterSelected] =
     useState<LibraryFilterType | null>(null);
+  const [sortBy, setSortBy] = useState<LibrarySortBy>(
+    LibrarySortBy.Alphabetical,
+  );
+  const [viewAs, setViewAs] = useState<ViewAsOption>(() => {
+    const defaultViewAsOption = VIEW_AS_OPTIONS.find(
+      (option) => option.label === 'List',
+    );
+
+    return defaultViewAsOption || VIEW_AS_OPTIONS[0];
+  });
 
   const searchInput = useRef<HTMLInputElement>(null);
 
-  // const playlists = user ? user.playlists : [];
-  // const followedArtists = user ? user.followedArtists : [];
-  // const albums = user ? user.savedAlbums : [];
+  const debouncedSearch = useDebounceValue(searchTerm);
 
   useEffect(() => {
     if (isShowSearchBox) {
@@ -45,7 +78,9 @@ const YourLibrary = () => {
       });
 
       const blurHandler = () => {
-        setIsShowSearchBox(false);
+        if (!searchTerm) {
+          setIsShowSearchBox(false);
+        }
       };
 
       searchInputElm?.addEventListener('blur', blurHandler);
@@ -54,40 +89,24 @@ const YourLibrary = () => {
         searchInputElm?.removeEventListener('blur', blurHandler);
       };
     }
-  }, [isShowSearchBox]);
+  }, [isShowSearchBox, searchTerm]);
 
-  const filteredLibraryItems = useMemo(() => {
-    let items: Array<Playlist | Artist | SavedAlbum> = [];
+  const computedLibraryItems = useMemo(() => {
+    let items: (Playlist | Artist | FormattedSavedAlbum)[] = [];
 
-    if (user) {
-      switch (filterSelected) {
-        case LibraryFilterType.Playlists:
-          items = user.playlists;
-          break;
+    items = formatAndSortLibraryItem({
+      user,
+      filterType: filterSelected,
+    });
 
-        case LibraryFilterType.Artists:
-          items = user.followedArtists;
-          break;
-
-        case LibraryFilterType.Albums:
-          items = user.savedAlbums;
-          break;
-
-        default:
-          items = [
-            ...user.playlists,
-            ...user.followedArtists,
-            ...user.savedAlbums,
-          ];
-          break;
-      }
+    if (debouncedSearch.trim()) {
+      items = items.filter((item) =>
+        item.name.toLowerCase().includes(debouncedSearch.trim().toLowerCase()),
+      );
     }
 
-    return {
-      type: filterSelected,
-      items,
-    };
-  }, [filterSelected, user]);
+    return items;
+  }, [filterSelected, debouncedSearch, user]);
 
   const showSearchBox = () => {
     setIsShowSearchBox(true);
@@ -101,6 +120,10 @@ const YourLibrary = () => {
     setFilterSelected(type);
   };
 
+  const changeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <YourLibraryFrame>
       <div className='YourLibrary-heading'>
@@ -109,9 +132,7 @@ const YourLibrary = () => {
           <p>Your Library</p>
         </div>
         <div className='YourLibrary-headingControls'>
-          <Button variant='icon'>
-            <PlusIcon />
-          </Button>
+          <CreateNew />
           <Button variant='icon'>
             <ArrowRightIcon />
           </Button>
@@ -154,34 +175,44 @@ const YourLibrary = () => {
           })}
         </div>
       </div>
-      <div className='YourLibrary-libraries'>
+      <div className='YourLibrary-library'>
         <ScrollArea>
-          <div className='YourLibrary-librariesSearch'>
-            <div
-              className={clsx('YourLibrary-searchBtn', {
-                'YourLibrary-active': isShowSearchBox,
-              })}
-            >
-              <Button variant='icon' onClick={showSearchBox}>
-                <SearchIcon />
-              </Button>
-              <Input
-                className='YourLibrary-searchInput'
-                placeholder='Search in Your Library'
-                ref={searchInput}
+          <div className='YourLibrary-libraryContainer'>
+            <div className='YourLibrary-librarySearch'>
+              <div
+                className={clsx('YourLibrary-search', {
+                  'YourLibrary-searchActive': isShowSearchBox,
+                })}
+              >
+                <Button
+                  variant='icon'
+                  onClick={showSearchBox}
+                  className='YourLibrary-toggleBtn'
+                >
+                  <SearchIcon />
+                </Button>
+                <Input
+                  className='YourLibrary-searchInput'
+                  placeholder='Search in Your Library'
+                  value={searchTerm}
+                  onChange={changeSearch}
+                  setValue={setSearchTerm}
+                  ref={searchInput}
+                />
+              </div>
+              <LibraryFilter
+                sortBy={sortBy}
+                viewAs={viewAs}
+                setSortBy={setSortBy}
+                setViewAs={setViewAs}
               />
             </div>
-            <Button variant='text' hoverScale endIcon={<CheeseBurgerIcon />}>
-              Recents
-            </Button>
+            <YourLibraryList
+              viewAs={viewAs}
+              items={computedLibraryItems}
+              search={debouncedSearch}
+            />
           </div>
-          <Stack.List className='YourLibrary-librariesList'>
-            s
-            {/* {filteredLibraryItems.length > 0 &&
-              filteredLibraryItems.map((filteredLibraryItem) => {
-                <ArtistItem key={artist.id} {...artist} />;
-              })} */}
-          </Stack.List>
         </ScrollArea>
       </div>
     </YourLibraryFrame>

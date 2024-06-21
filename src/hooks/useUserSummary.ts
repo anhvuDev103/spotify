@@ -5,7 +5,7 @@ import {
   SavedAlbum,
   SavedTrack,
 } from '@spotify/web-api-ts-sdk';
-import { formatUserSummary } from '@utils/formatters.ts/formatUserSummary';
+import { formatUserSummary } from '@utils/formatters/user';
 import { combineQueries } from '@utils/queries';
 
 import useCurrentUserFollowedArtists from './useCurrentUserFollowedArtists';

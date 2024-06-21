@@ -46,7 +46,7 @@ export const YourLibraryFrame = styled(Paper)`
     margin-left: auto;
   }
 
-  .YourLibrary-searchBtn {
+  .YourLibrary-search {
     width: 10px;
 
     display: flex;
@@ -59,12 +59,12 @@ export const YourLibraryFrame = styled(Paper)`
     transition: 300ms;
   }
 
-  .YourLibrary-active {
+  .YourLibrary-searchActive {
     width: 188px;
 
     background-color: ${({ theme }) => theme.palette.button.ghost.hover};
 
-    button {
+    .YourLibrary-toggleBtn {
       background-color: transparent;
 
       pointer-events: none;
@@ -114,7 +114,7 @@ export const YourLibraryFrame = styled(Paper)`
     }
   }
 
-  .YourLibrary-librariesSearch {
+  .YourLibrary-librarySearch {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -122,7 +122,7 @@ export const YourLibraryFrame = styled(Paper)`
     padding: 2px 12px 0 8px;
   }
 
-  .YourLibrary-libraries {
+  .YourLibrary-library {
     padding: 0 0 8px 8px;
 
     flex: 1;
@@ -130,8 +130,68 @@ export const YourLibraryFrame = styled(Paper)`
     overflow: hidden;
   }
 
-  .YourLibrary-librariesList {
+  .YourLibrary-libraryContainer {
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .YourLibrary-libraryList {
+    max-width: 100%;
     padding-right: 8px;
+
+    &:has(.YourLibrary-noItemFound) {
+      margin: auto;
+    }
+  }
+
+  .YourLibrary-viewTypeCompact {
+    .LibraryItem-thumbnail {
+      display: none;
+    }
+
+    .LibraryItem-details {
+      .PlaylistItem-info,
+      .AlbumItem-info {
+        display: none;
+      }
+    }
+
+    .LibraryItem {
+      padding: 4px 8px;
+    }
+
+    .LibraryItem-details {
+      height: 24px;
+    }
+  }
+
+  .YourLibrary-viewTypeList {
+  }
+
+  .YourLibrary-viewTypeGrid {
+  }
+
+  .YourLibrary-noItemFound {
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h5 {
+      margin-bottom: 16px;
+
+      color: ${({ theme }) => theme.palette.text.main};
+    }
+
+    h6 {
+      ${({ theme }) => theme.typography.regular14};
+      color: ${({ theme }) => theme.palette.text.main};
+    }
   }
 `;
 
@@ -159,8 +219,24 @@ export const LibraryItemFrame = styled(Stack.Item)`
     cursor: pointer;
 
     &::after {
-      background-color: ${({ theme }) => theme.palette.action.hover};
+      background-color: ${({ theme }) => theme.palette.action.hover0};
     }
+  }
+
+  h5 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .LibraryItem-details {
+    min-width: 0;
+  }
+
+  .LibraryItem-type {
+    ${({ theme }) => theme.typography.regular14};
+
+    text-transform: capitalize;
   }
 `;
 
@@ -214,5 +290,33 @@ export const ArtistItemFrame = styled(LibraryItemFrame)`
   .ArtistItem-name {
     ${({ theme }) => theme.typography.regular16};
     color: ${({ theme }) => theme.palette.text.main};
+  }
+`;
+
+export const AlbumItemFrame = styled(LibraryItemFrame)`
+  img.AlbumItem-thumbnail {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+  }
+
+  .AlbumItem-details {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+  }
+
+  .AlbumItem-name {
+    color: ${({ theme }) => theme.palette.text.main};
+  }
+
+  .AlbumItem-info {
+    font-size: 1.4rem;
+
+    svg {
+      font-size: 1.2rem;
+      margin-right: 8px;
+    }
   }
 `;

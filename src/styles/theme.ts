@@ -57,6 +57,7 @@ export const getDesignTokens = (mode: Mode) => {
       background: {
         default: getColor('#000000', ''),
         paper: getColor('#121212', ''),
+        popover: getColor('#282828', ''),
       },
       border: {
         main: getColor('#000000', ''),
@@ -66,8 +67,10 @@ export const getDesignTokens = (mode: Mode) => {
         muted: getColor('#b3b3b3', ''),
       },
       action: {
-        hover: getColor('#1a1a1a', ''),
+        hover0: getColor('#1a1a1a', ''),
+        hover1: getColor('#ffffff1a', ''),
       },
+      divider: getColor('#ffffff1a', ''),
       button: {
         contained: {
           main: getColor('#0000008a', ''),
@@ -97,6 +100,18 @@ export const getDesignTokens = (mode: Mode) => {
       },
     },
     typography: {
+      bold10: {
+        fontSize: '1rem',
+        fontWeight: '700',
+      },
+      medium10: {
+        fontSize: '1rem',
+        fontWeight: '500',
+      },
+      regular10: {
+        fontSize: '1rem',
+        fontWeight: '400',
+      },
       bold12: {
         fontSize: '1.2rem',
         fontWeight: '700',

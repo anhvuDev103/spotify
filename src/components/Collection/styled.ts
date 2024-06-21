@@ -28,7 +28,7 @@ export const CollectionFrame = styled(Paper)<StyledCollectionFrameProps>`
     cursor: pointer;
 
     &::after {
-      background-color: ${({ theme }) => theme.palette.action.hover};
+      background-color: ${({ theme }) => theme.palette.action.hover0};
     }
 
     .Collection-playBtn {

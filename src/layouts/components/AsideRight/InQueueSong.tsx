@@ -24,7 +24,7 @@ const InQueueSongFrame = styled(Song)`
     cursor: pointer;
 
     &::after {
-      background-color: ${({ theme }) => theme.palette.action.hover};
+      background-color: ${({ theme }) => theme.palette.action.hover0};
     }
 
     .Song-thumbnail::after {

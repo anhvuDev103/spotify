@@ -1,4 +1,5 @@
 import {
+  Album,
   Artist,
   FollowedArtists,
   Page,
@@ -6,13 +7,18 @@ import {
   SavedAlbum,
   SavedTrack,
 } from '@spotify/web-api-ts-sdk';
+import moment from 'moment';
 
 export type FormattedUserSummary = {
   playlists: Playlist[];
   savedTracks: SavedTrack[];
-  savedAlbums: SavedAlbum[];
+  savedAlbums: FormattedSavedAlbum[];
   followedArtists: Artist[];
 };
+
+export type FormattedSavedAlbum = {
+  added_at: number;
+} & Album;
 
 export const formatUserSummary = ({
   userPlaylists,
@@ -25,10 +31,19 @@ export const formatUserSummary = ({
   userSavedAlbums: Page<SavedAlbum>;
   userFollowedArtists: FollowedArtists;
 }): FormattedUserSummary => {
+  const formattedSavedAlbums = userSavedAlbums.items.map<FormattedSavedAlbum>(
+    (savedAlbum) => {
+      return {
+        added_at: moment(savedAlbum.added_at).unix(),
+        ...savedAlbum.album,
+      };
+    },
+  );
+
   return {
     playlists: userPlaylists.items,
     savedTracks: userSavedTracks.items,
-    savedAlbums: userSavedAlbums.items,
+    savedAlbums: formattedSavedAlbums,
     followedArtists: userFollowedArtists.artists.items,
   };
 };

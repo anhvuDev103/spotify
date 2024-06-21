@@ -1,5 +1,5 @@
 import useUserSummary from '@hooks/useUserSummary';
-import { FormattedUserSummary } from '@utils/formatters.ts/formatUserSummary';
+import { FormattedUserSummary } from '@utils/formatters/user';
 import { createContext, useContext } from 'react';
 import invariant from 'tiny-invariant';
 
