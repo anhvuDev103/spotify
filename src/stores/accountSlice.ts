@@ -1,19 +1,13 @@
-import cookieService from '@services/CookieService';
+import { UserProfile } from '@spotify/web-api-ts-sdk';
 import { StateCreator } from 'zustand';
 
 import { RootStore } from './root';
 
-export interface AuthSlice {
-  accessToken: string | undefined;
-  refreshToken: string | undefined;
-
-  setAccessToken: (token: string | undefined) => void;
-  setRefreshToken: (token: string | undefined) => void;
-  initTokens: () => void;
-  clearTokens: () => void;
+export interface AccountSlice {
+  profile: UserProfile | undefined;
 }
 
-export const createAuthSlice: StateCreator<
+export const createAccountSlice: StateCreator<
   RootStore,
   [
     ['zustand/devtools', never],
@@ -21,33 +15,9 @@ export const createAuthSlice: StateCreator<
     ['zustand/immer', never],
   ],
   [],
-  AuthSlice
-> = (set, get) => {
+  AccountSlice
+> = () => {
   return {
-    accessToken: undefined,
-    refreshToken: undefined,
-
-    setAccessToken: (token) => {
-      set({
-        accessToken: token,
-      });
-    },
-    setRefreshToken: (token) => {
-      set({
-        refreshToken: token,
-      });
-    },
-    initTokens: () => {
-      const { setAccessToken, setRefreshToken } = get();
-
-      setAccessToken(cookieService.get('access_token'));
-      setRefreshToken(cookieService.get('refresh_token'));
-    },
-    clearTokens: () => {
-      set({
-        accessToken: undefined,
-        refreshToken: undefined,
-      });
-    },
+    profile: undefined,
   };
 };

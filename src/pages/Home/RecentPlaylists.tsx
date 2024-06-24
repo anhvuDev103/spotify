@@ -1,18 +1,33 @@
+import { TopContent } from '@utils/formatters/home';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const RecentPlaylists = () => {
+interface Props {
+  items: TopContent[];
+}
+
+const RecentPlaylists: React.FC<Props> = ({ items }) => {
   return (
     <RecentPlaylistsFrame>
-      {[...Array(8)].map((_, i) => (
-        <div key={i} className='RecentPlaylists-recentPlaylistItem'>
-          <img
-            src='https://misc.scdn.co/liked-songs/liked-songs-640.png'
-            alt='FIX_ME'
-            className='RecentPlaylists-thumbnail'
-          />
-          <h5 className='RecentPlaylists-name'>Liked Songs</h5>
-        </div>
-      ))}
+      {items.map((item) => {
+        const [image] = item.images;
+        const [, type, id] = item.uri.split(':');
+
+        return (
+          <Link
+            key={item.uri}
+            to={`/${type}/${id}`}
+            className='RecentPlaylists-recentPlaylistItem'
+          >
+            <img
+              src={image.url}
+              alt={item.name}
+              className='RecentPlaylists-thumbnail'
+            />
+            <h5 className='RecentPlaylists-name'>{item.name}</h5>
+          </Link>
+        );
+      })}
     </RecentPlaylistsFrame>
   );
 };

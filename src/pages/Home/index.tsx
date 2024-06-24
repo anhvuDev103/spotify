@@ -2,12 +2,15 @@ import Badge from '@components/Badge';
 import Collection from '@components/Collection';
 import CollectionsPanel from '@components/primitives/CollectionsPanel';
 import PagePanel from '@components/primitives/PagePanel';
+import useHomeSummary from '@hooks/home/useHomeSummary';
 import { memo } from 'react';
 import styled from 'styled-components';
 
 import RecentPlaylists from './RecentPlaylists';
 
 const Home = () => {
+  const { data: homeSummary } = useHomeSummary();
+
   return (
     <PagePanel
       bottomExtension={
@@ -19,11 +22,17 @@ const Home = () => {
       }
     >
       <HomeFrame>
-        <RecentPlaylists />
-        {[...Array(20)].map((__, k) => (
-          <CollectionsPanel key={k}>
-            {[...Array(7)].map((_, i) => (
-              <Collection key={i} />
+        <RecentPlaylists items={homeSummary?.topContents || []} />
+        {homeSummary?.categoryContents.map((categoryContent) => (
+          <CollectionsPanel
+            key={`CollectionsPanel:${categoryContent.name}`}
+            name={categoryContent.name}
+          >
+            {categoryContent.playlists.map((playlist) => (
+              <Collection
+                key={`Collection:${categoryContent.name}:${playlist.id}`}
+                {...playlist}
+              />
             ))}
           </CollectionsPanel>
         ))}

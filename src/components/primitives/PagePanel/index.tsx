@@ -62,7 +62,15 @@ const PagePanel: React.FC<PagePanelProps> = ({ bottomExtension, children }) => {
                 src='https://i2o.scdn.co/image/ab67706c0000cfa39a48455a14b7df88184cd74b'
               />
             </Button>
-            <Link to={oauthUrl}>Za chon day</Link>
+            <Link to={oauthUrl}>
+              <Button
+                variant='emphasize'
+                size='lg'
+                className='PagePanel-loginBtn'
+              >
+                Log in
+              </Button>
+            </Link>
           </div>
         </div>
         {bottomExtension && (

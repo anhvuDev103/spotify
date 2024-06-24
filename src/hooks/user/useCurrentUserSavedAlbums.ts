@@ -1,7 +1,6 @@
 import { queryKeysFactory } from '@constants/queries';
+import { useSharedServices } from '@hooks/providers/useSharedServicesProvider';
 import { useQuery } from '@tanstack/react-query';
-
-import { useSharedServices } from './providers/useSharedServicesProvider';
 
 const useCurrentUserSavedAlbums = () => {
   const { uiUserService } = useSharedServices();
@@ -9,6 +8,7 @@ const useCurrentUserSavedAlbums = () => {
   return useQuery({
     queryKey: queryKeysFactory.getCurrentUserSavedAlbums,
     queryFn: () => uiUserService.getCurrentUserSavedAlbums(),
+    select: (data) => data.items,
   });
 };
 

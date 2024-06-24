@@ -90,6 +90,9 @@ const getSizeStyle = ({ $size, $variant, theme }: ThemedButtonProps) => {
       }),
     },
     [ButtonSizesEnum.Large]: {
+      height: 48,
+      padding: '8px 32px',
+
       ...($variant === ButtonVariantsEnum.Icon && {
         width: 48,
         padding: 12,

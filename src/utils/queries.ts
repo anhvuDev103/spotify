@@ -1,4 +1,5 @@
 import { UseQueryResult } from '@tanstack/react-query';
+import pick from 'lodash/pick';
 
 type NonUndefined<T> = T extends undefined ? never : T;
 
@@ -31,4 +32,10 @@ export const combineQueries = <Queries extends readonly UseQueryResult[], P>(
     data: isAllQueriesDataDefined ? combiner(...queriesData) : undefined,
     error,
   };
+};
+
+export const simplifyQueries = <Queries extends readonly UseQueryResult[]>(
+  queries: Queries,
+) => {
+  return queries.map((query) => pick(query, ['data', 'isLoading', 'error']));
 };

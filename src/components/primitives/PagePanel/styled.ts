@@ -23,6 +23,10 @@ export const PagePanelFrame = styled(Paper)<StyledPagePanelFrameProps>`
     min-height: 64px;
   }
 
+  .PagePanel-loginBtn {
+    font-weight: 700;
+  }
+
   .PagePanel-headerBottom {
   }
 

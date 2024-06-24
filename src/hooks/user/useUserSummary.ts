@@ -1,6 +1,5 @@
 import {
-  FollowedArtists,
-  Page,
+  Artist,
   Playlist,
   SavedAlbum,
   SavedTrack,
@@ -14,10 +13,10 @@ import useCurrentUserSavedAlbums from './useCurrentUserSavedAlbums';
 import useCurrentUserSavedTracks from './useCurrentUserSavedTracks';
 
 const combiner = (
-  userPlaylists: Page<Playlist>,
-  userSavedTracks: Page<SavedTrack>,
-  userSavedAlbums: Page<SavedAlbum>,
-  userFollowedArtists: FollowedArtists,
+  userPlaylists: Playlist[],
+  userSavedTracks: SavedTrack[],
+  userSavedAlbums: SavedAlbum[],
+  userFollowedArtists: Artist[],
 ) => {
   return formatUserSummary({
     userPlaylists,

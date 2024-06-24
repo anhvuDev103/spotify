@@ -1,4 +1,4 @@
-import useUserSummary from '@hooks/useUserSummary';
+import useUserSummary from '@hooks/user/useUserSummary';
 import { FormattedUserSummary } from '@utils/formatters/user';
 import { createContext, useContext } from 'react';
 import invariant from 'tiny-invariant';
@@ -9,19 +9,24 @@ interface AppDataProviderProps {
 
 interface AppDataContextType {
   user?: FormattedUserSummary;
+  isLoading: boolean;
 }
 
-const AppDataContext = createContext<AppDataContextType>({});
+const AppDataContext = createContext<AppDataContextType>({
+  isLoading: true,
+});
 
 export const AppDataProvider: React.FC<AppDataProviderProps> = ({
   children,
 }) => {
-  const { data: user } = useUserSummary();
+  const { data: userSummary, isLoading: isUserSummaryLoading } =
+    useUserSummary();
 
   return (
     <AppDataContext.Provider
       value={{
-        user,
+        user: userSummary,
+        isLoading: isUserSummaryLoading,
       }}
     >
       {children}

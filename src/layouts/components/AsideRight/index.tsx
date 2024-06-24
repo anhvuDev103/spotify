@@ -3,11 +3,16 @@ import ScrollArea from '@components/primitives/ScrollArea';
 import Stack from '@components/primitives/Stack';
 import { CloseIcon } from '@components/Svg';
 import { AsideRightFrame } from '@layouts/styled';
+import { useRootStore } from '@stores/root';
 import { memo } from 'react';
 
 import InQueueSong from './InQueueSong';
 
 const AsideRight = () => {
+  const { profile } = useRootStore();
+
+  if (!profile) return null;
+
   return (
     <AsideRightFrame>
       <div className='AsideRight-head'>

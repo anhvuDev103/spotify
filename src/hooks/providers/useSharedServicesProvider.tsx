@@ -1,4 +1,5 @@
 import AuthService from '@services/AuthService';
+import UiHomeService from '@services/UiHomeService';
 import UiUserService from '@services/UiUserService';
 import { createContext, useContext } from 'react';
 import invariant from 'tiny-invariant';
@@ -10,6 +11,7 @@ interface SharedServicesProviderProps {
 interface SharedServicesContextType {
   authService: AuthService;
   uiUserService: UiUserService;
+  uiHomeService: UiHomeService;
 }
 
 const SharedServicesContext = createContext<SharedServicesContextType | null>(
@@ -21,9 +23,12 @@ export const SharedServicesProvider: React.FC<SharedServicesProviderProps> = ({
 }) => {
   const authService = new AuthService();
   const uiUserService = new UiUserService();
+  const uiHomeService = new UiHomeService();
 
   return (
-    <SharedServicesContext.Provider value={{ authService, uiUserService }}>
+    <SharedServicesContext.Provider
+      value={{ authService, uiUserService, uiHomeService }}
+    >
       {children}
     </SharedServicesContext.Provider>
   );

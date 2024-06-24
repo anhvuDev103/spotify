@@ -1,7 +1,6 @@
 import { queryKeysFactory } from '@constants/queries';
+import { useSharedServices } from '@hooks/providers/useSharedServicesProvider';
 import { useQuery } from '@tanstack/react-query';
-
-import { useSharedServices } from './providers/useSharedServicesProvider';
 
 const useCurrentUserSavedTracks = () => {
   const { uiUserService } = useSharedServices();
@@ -9,6 +8,7 @@ const useCurrentUserSavedTracks = () => {
   return useQuery({
     queryKey: queryKeysFactory.getCurrentUserSavedTracks,
     queryFn: () => uiUserService.getCurrentUserSavedTracks(),
+    select: (data) => data.items,
   });
 };
 

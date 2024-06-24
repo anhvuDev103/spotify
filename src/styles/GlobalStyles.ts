@@ -57,6 +57,10 @@ const GlobalStyles = createGlobalStyle`
         display: inline-block;
     }
 
+    a {
+        text-decoration: none;
+    }
+
 
     .ScrollArea {
         width: 100%;
