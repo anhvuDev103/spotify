@@ -55,7 +55,7 @@ export const PopoverOptionItemFrame = styled.div<PopoverOptionItemFrameProps>`
   ${({ $disabled }) =>
     $disabled &&
     css`
-      color: ${({ theme }) => theme.palette.text.muted};
+      color: ${({ theme }) => theme.palette.text.muted0};
 
       pointer-events: none;
     `};

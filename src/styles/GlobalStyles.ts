@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
         font-size: 1.6rem;
 
         &:not(path) {
-            color: ${({ theme }) => theme.palette.text.muted};
+            color: ${({ theme }) => theme.palette.text.muted0};
         }
 
         &::-webkit-scrollbar {

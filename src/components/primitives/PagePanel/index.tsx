@@ -14,7 +14,11 @@ import ScrollArea from '../ScrollArea';
 import { PagePanelFrame } from './styled';
 import { PagePanelProps } from './types';
 
-const PagePanel: React.FC<PagePanelProps> = ({ bottomExtension, children }) => {
+const PagePanel: React.FC<PagePanelProps> = ({
+  bottomExtension,
+  leftExtension,
+  children,
+}) => {
   const { authService } = useSharedServices();
   const oauthUrl = authService.getOauthUrl();
 
@@ -43,6 +47,7 @@ const PagePanel: React.FC<PagePanelProps> = ({ bottomExtension, children }) => {
               <ChevronRightIcon color='text.main' />
             </Button>
           </div>
+          {leftExtension}
           <div className='PagePanel-user'>
             {isLogin && user?.profile && (
               <>

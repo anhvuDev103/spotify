@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 import RecentPlaylists from './RecentPlaylists';
 
-export enum HomeFilterType {
+enum HomeFilterType {
   All = 'All',
   Music = 'Music',
   Podcasts = 'Podcasts',

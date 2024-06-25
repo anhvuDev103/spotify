@@ -109,7 +109,7 @@ export const YourLibraryFrame = styled(Paper)`
       background-color: ${({ theme }) => theme.palette.button.ghost.hover};
 
       svg {
-        color: ${({ theme }) => theme.palette.text.muted};
+        color: ${({ theme }) => theme.palette.text.muted0};
       }
     }
   }

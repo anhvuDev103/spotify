@@ -28,7 +28,7 @@ export const CollectionsPanelFrame = styled(
 
   .CollectionsPanel-showAllBtn {
     ${({ theme }) => theme.typography.medium14};
-    color: ${({ theme }) => theme.palette.text.muted};
+    color: ${({ theme }) => theme.palette.text.muted0};
 
     &:hover {
       cursor: pointer;

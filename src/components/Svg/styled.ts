@@ -7,7 +7,7 @@ const Svg = styled.svg<SvgProps>`
   flex-shrink: 0;
   font-size: 2.4rem;
   color: ${({ theme, color }) =>
-    getThemeValue(theme.palette, color || 'text.muted')};
+    getThemeValue(theme.palette, color || 'text.muted0')};
 
   ${({ size }) => css`
     width: ${size || '1em'};

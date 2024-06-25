@@ -11,3 +11,5 @@ export type PopoverOptionType<T = string> = {
 };
 
 export type DispatchType<T> = React.Dispatch<React.SetStateAction<T>>;
+
+export type RequestParams = Record<string, string | number>;

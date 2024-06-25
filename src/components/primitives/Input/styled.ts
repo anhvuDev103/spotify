@@ -17,7 +17,7 @@ export const InputFrame = styled.div<StyledInputProps>`
     inset: 0;
 
     &::placeholder {
-      color: ${({ theme }) => theme.palette.text.muted};
+      color: ${({ theme }) => theme.palette.text.muted0};
     }
   }
 

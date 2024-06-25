@@ -1,5 +1,6 @@
 import http from '@helpers/http';
 import { Categories, FeaturedPlaylists } from '@spotify/web-api-ts-sdk';
+import { RequestParams } from '@utils/types';
 
 class UiHomeService {
   async getFeaturedPlaylists() {
@@ -10,9 +11,12 @@ class UiHomeService {
     return playlists.items;
   }
 
-  async getSeveralBrowseCategories() {
+  async getSeveralBrowseCategories(params?: RequestParams) {
     const { categories } = await http.get<never, Categories>(
       '/browse/categories',
+      {
+        params,
+      },
     );
 
     return categories.items;

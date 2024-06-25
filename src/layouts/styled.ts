@@ -59,7 +59,7 @@ export const NavigationItem = styled(Stack.Item)`
 
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.palette.text.muted};
+    color: ${({ theme }) => theme.palette.text.muted0};
 
     ${({ theme }) => theme.typography.medium16};
   }
