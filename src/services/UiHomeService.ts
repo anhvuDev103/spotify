@@ -3,11 +3,19 @@ import { Categories, FeaturedPlaylists } from '@spotify/web-api-ts-sdk';
 
 class UiHomeService {
   async getFeaturedPlaylists() {
-    return http.get<never, FeaturedPlaylists>('/browse/featured-playlists');
+    const { playlists } = await http.get<never, FeaturedPlaylists>(
+      '/browse/featured-playlists',
+    );
+
+    return playlists.items;
   }
 
   async getSeveralBrowseCategories() {
-    return http.get<never, Categories>('/browse/categories');
+    const { categories } = await http.get<never, Categories>(
+      '/browse/categories',
+    );
+
+    return categories.items;
   }
 
   async getPlaylistsByCategoryId(categoryId: string) {

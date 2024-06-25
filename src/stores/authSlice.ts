@@ -9,7 +9,10 @@ export interface AuthSlice {
 
   setAccessToken: (token: string | undefined) => void;
   setRefreshToken: (token: string | undefined) => void;
-  initTokens: () => void;
+  initTokens: () => {
+    accessToken: string;
+    refreshToken: string;
+  };
   clearTokens: () => void;
 }
 
@@ -40,8 +43,16 @@ export const createAuthSlice: StateCreator<
     initTokens: () => {
       const { setAccessToken, setRefreshToken } = get();
 
-      setAccessToken(cookieService.get('access_token'));
-      setRefreshToken(cookieService.get('refresh_token'));
+      const accessToken = cookieService.get('access_token');
+      const refreshToken = cookieService.get('refresh_token');
+
+      setAccessToken(accessToken);
+      setRefreshToken(refreshToken);
+
+      return {
+        accessToken,
+        refreshToken,
+      };
     },
     clearTokens: () => {
       set({

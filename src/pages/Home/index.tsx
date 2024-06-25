@@ -3,21 +3,41 @@ import Collection from '@components/Collection';
 import CollectionsPanel from '@components/primitives/CollectionsPanel';
 import PagePanel from '@components/primitives/PagePanel';
 import useHomeSummary from '@hooks/home/useHomeSummary';
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import styled from 'styled-components';
 
 import RecentPlaylists from './RecentPlaylists';
 
+export enum HomeFilterType {
+  All = 'All',
+  Music = 'Music',
+  Podcasts = 'Podcasts',
+}
+
 const Home = () => {
+  const [filterSelected, setFilterSelected] = useState<HomeFilterType>(
+    HomeFilterType.All,
+  );
+
   const { data: homeSummary } = useHomeSummary();
+
+  const selectFilterType = (type: HomeFilterType) => () => {
+    setFilterSelected(type);
+  };
 
   return (
     <PagePanel
       bottomExtension={
         <CategoryFilter>
-          <Badge>All</Badge>
-          <Badge>Music</Badge>
-          <Badge>Podcasts</Badge>
+          {Object.values(HomeFilterType).map((filterType) => (
+            <Badge
+              key={filterType}
+              onClick={selectFilterType(filterType)}
+              variant={filterType === filterSelected ? 'emphasize' : undefined}
+            >
+              {filterType}
+            </Badge>
+          ))}
         </CategoryFilter>
       }
     >

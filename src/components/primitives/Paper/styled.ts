@@ -1,7 +1,7 @@
 import { InterpolationMapped, Theme } from '@styles/theme';
 import styled from 'styled-components';
 
-import { PaperVariants } from './types';
+import { PaperVariants, PaperVariantsEnum } from './types';
 
 interface StyledPaperProps {
   $variant?: PaperVariants;
@@ -13,8 +13,11 @@ interface ThemedButtonProps extends StyledPaperProps {
 
 const getVariantStyle = ({ $variant, theme }: ThemedButtonProps) => {
   const styles = {
-    [PaperVariants.Contained]: {
-      backgroundColor: theme.palette.background.paper,
+    [PaperVariantsEnum.Contained]: {
+      backgroundColor: theme.palette.paper.contained.main,
+    },
+    [PaperVariantsEnum.Alpha]: {
+      backgroundColor: theme.palette.paper.alpha.main,
     },
   } as InterpolationMapped<PaperVariants>;
 

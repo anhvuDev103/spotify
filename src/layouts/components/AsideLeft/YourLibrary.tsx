@@ -1,6 +1,7 @@
 import Badge from '@components/Badge';
 import Button from '@components/primitives/Button';
 import Input from '@components/primitives/Input';
+import Paper from '@components/primitives/Paper';
 import ScrollArea from '@components/primitives/ScrollArea';
 import {
   ArrowRightIcon,
@@ -11,9 +12,10 @@ import {
 import { useAppDataProvider } from '@hooks/providers/useAppDataProvider';
 import useDebounceValue from '@hooks/useDebounceValue';
 import { YourLibraryFrame } from '@layouts/styles/YourLibrary.styled';
-import CreateNew from '@popups/CreateNew';
+import CreateNewAction from '@popups/CreateNewAction';
 import LibraryFilter, { VIEW_AS_OPTIONS } from '@popups/LibraryFilter';
 import { Artist, Playlist } from '@spotify/web-api-ts-sdk';
+import { useRootStore } from '@stores/root';
 import { formatAndSortLibraryItem } from '@utils/formatters/library';
 import { FormattedSavedAlbum } from '@utils/formatters/user';
 import { PopoverOptionType } from '@utils/types';
@@ -49,6 +51,7 @@ export interface YourLibraryItemProps {
 
 const YourLibrary = () => {
   const { user } = useAppDataProvider();
+  const { isLogin } = useRootStore();
 
   const [isShowSearchBox, setIsShowSearchBox] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -132,10 +135,12 @@ const YourLibrary = () => {
           <p>Your Library</p>
         </div>
         <div className='YourLibrary-headingControls'>
-          <CreateNew />
-          <Button variant='icon'>
-            <ArrowRightIcon />
-          </Button>
+          <CreateNewAction />
+          {isLogin && (
+            <Button variant='icon'>
+              <ArrowRightIcon />
+            </Button>
+          )}
         </div>
       </div>
       <div className='YourLibrary-head'>
@@ -162,11 +167,11 @@ const YourLibrary = () => {
             if (filterType === filterSelected) {
               return (
                 <Badge
+                  key={filterType}
+                  onClick={selectFilterType(filterType)}
                   variant={
                     filterType === filterSelected ? 'emphasize' : undefined
                   }
-                  key={filterType}
-                  onClick={selectFilterType(filterType)}
                 >
                   {filterType}
                 </Badge>
@@ -178,40 +183,58 @@ const YourLibrary = () => {
       <div className='YourLibrary-library'>
         <ScrollArea>
           <div className='YourLibrary-libraryContainer'>
-            <div className='YourLibrary-librarySearch'>
-              <div
-                className={clsx('YourLibrary-search', {
-                  'YourLibrary-searchActive': isShowSearchBox,
-                })}
-              >
-                <Button
-                  variant='icon'
-                  onClick={showSearchBox}
-                  className='YourLibrary-toggleBtn'
-                >
-                  <SearchIcon />
-                </Button>
-                <Input
-                  className='YourLibrary-searchInput'
-                  placeholder='Search in Your Library'
-                  value={searchTerm}
-                  onChange={changeSearch}
-                  setValue={setSearchTerm}
-                  ref={searchInput}
+            {isLogin && (
+              <>
+                <div className='YourLibrary-librarySearch'>
+                  <div
+                    className={clsx('YourLibrary-search', {
+                      'YourLibrary-searchActive': isShowSearchBox,
+                    })}
+                  >
+                    <Button
+                      variant='icon'
+                      onClick={showSearchBox}
+                      className='YourLibrary-toggleBtn'
+                    >
+                      <SearchIcon />
+                    </Button>
+                    <Input
+                      className='YourLibrary-searchInput'
+                      placeholder='Search in Your Library'
+                      value={searchTerm}
+                      onChange={changeSearch}
+                      setValue={setSearchTerm}
+                      ref={searchInput}
+                    />
+                  </div>
+                  <LibraryFilter
+                    sortBy={sortBy}
+                    viewAs={viewAs}
+                    setSortBy={setSortBy}
+                    setViewAs={setViewAs}
+                  />
+                </div>
+                <YourLibraryList
+                  viewAs={viewAs}
+                  items={computedLibraryItems}
+                  search={debouncedSearch}
                 />
-              </div>
-              <LibraryFilter
-                sortBy={sortBy}
-                viewAs={viewAs}
-                setSortBy={setSortBy}
-                setViewAs={setViewAs}
-              />
-            </div>
-            <YourLibraryList
-              viewAs={viewAs}
-              items={computedLibraryItems}
-              search={debouncedSearch}
-            />
+              </>
+            )}
+            {!isLogin && (
+              <>
+                <Paper variant='alpha' className='YourLibrary-suggestAction'>
+                  <h3>Create your first playlist</h3>
+                  <p>It's easy, we'll help you</p>
+                  <Button>Create playlist</Button>
+                </Paper>
+                <Paper variant='alpha' className='YourLibrary-suggestAction'>
+                  <h3>Let's find some podcasts to follow</h3>
+                  <p>We'll keep you updated on new episodes</p>
+                  <Button>Browse podcasts</Button>
+                </Paper>
+              </>
+            )}
           </div>
         </ScrollArea>
       </div>

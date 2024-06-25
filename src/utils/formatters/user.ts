@@ -6,6 +6,7 @@ import {
   Playlist,
   SavedAlbum,
   SavedTrack,
+  UserProfile,
 } from '@spotify/web-api-ts-sdk';
 import moment from 'moment';
 
@@ -18,6 +19,7 @@ export type FormattedUserSummary = {
   savedTracks: SavedTrack[];
   savedAlbums: FormattedSavedAlbum[];
   followedArtists: Artist[];
+  profile: UserProfile;
 };
 
 export const formatUserSummary = ({
@@ -25,11 +27,13 @@ export const formatUserSummary = ({
   userSavedTracks,
   userSavedAlbums,
   userFollowedArtists,
+  userProfile,
 }: {
   userPlaylists: Playlist[];
   userSavedTracks: SavedTrack[];
   userSavedAlbums: SavedAlbum[];
-  userFollowedArtists: FollowedArtists['artists']['items'];
+  userFollowedArtists: Artist[];
+  userProfile: UserProfile;
 }): FormattedUserSummary => {
   const formattedSavedAlbums = userSavedAlbums.map<FormattedSavedAlbum>(
     (savedAlbum) => {
@@ -45,5 +49,6 @@ export const formatUserSummary = ({
     savedTracks: userSavedTracks,
     savedAlbums: formattedSavedAlbums,
     followedArtists: userFollowedArtists,
+    profile: userProfile,
   };
 };

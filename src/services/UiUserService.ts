@@ -5,27 +5,43 @@ import {
   Playlist,
   SavedAlbum,
   SavedTrack,
+  UserProfile,
 } from '@spotify/web-api-ts-sdk';
 
 class UiUserService {
   async getCurrentUserPlaylists() {
-    return http.get<never, Page<Playlist>>('/me/playlists');
+    const { items } = await http.get<never, Page<Playlist>>('/me/playlists');
+
+    return items;
   }
 
   async getCurrentUserSavedTracks() {
-    return http.get<never, Page<SavedTrack>>('/me/tracks');
+    const { items } = await http.get<never, Page<SavedTrack>>('/me/tracks');
+
+    return items;
   }
 
   async getCurrentUserSavedAlbums() {
-    return http.get<never, Page<SavedAlbum>>('/me/albums');
+    const { items } = await http.get<never, Page<SavedAlbum>>('/me/albums');
+
+    return items;
   }
 
   async getCurrentUserFollowedArtists() {
-    return http.get<never, FollowedArtists>('/me/following', {
-      params: {
-        type: 'artist',
+    const { artists } = await http.get<never, FollowedArtists>(
+      '/me/following',
+      {
+        params: {
+          type: 'artist',
+        },
       },
-    });
+    );
+
+    return artists.items;
+  }
+
+  async getCurrentUserProfile() {
+    return http.get<never, UserProfile>('/me');
   }
 }
 

@@ -1,6 +1,7 @@
 import 'overlayscrollbars/styles/overlayscrollbars.css';
 
 import { ROUTES } from '@constants/app';
+import { useAppDataProvider } from '@hooks/providers/useAppDataProvider';
 import MainLayout from '@layouts/MainLayout';
 import { useRootStore } from '@stores/root';
 import GlobalStyles from '@styles/GlobalStyles';
@@ -10,13 +11,15 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 function App() {
-  const { initTokens } = useRootStore();
+  const { initTokens, login } = useRootStore();
+  const { user } = useAppDataProvider();
 
   useEffect(() => {
     initTokens();
+    login(user?.profile);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [!!user]);
 
   return (
     <ThemeProvider theme={getDesignTokens('dark')}>

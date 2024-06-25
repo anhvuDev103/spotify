@@ -30,12 +30,15 @@ export const formatHomeSummary = ({
   });
 
   return {
-    topContents: [
-      LIKED_SONGS_COLLECTION,
-      ...featuredPlaylists
-        .slice(0, TOP_CONTENT_LIMIT - 1)
-        .map((item) => pick(item, ['name', 'images', 'uri'])),
-    ],
+    topContents:
+      featuredPlaylists.length > 0
+        ? [
+            LIKED_SONGS_COLLECTION,
+            ...featuredPlaylists
+              .slice(0, TOP_CONTENT_LIMIT - 1)
+              .map((item) => pick(item, ['name', 'images', 'uri'])),
+          ]
+        : [],
     categoryContents,
   };
 };

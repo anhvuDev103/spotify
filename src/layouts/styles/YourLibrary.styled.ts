@@ -193,6 +193,30 @@ export const YourLibraryFrame = styled(Paper)`
       color: ${({ theme }) => theme.palette.text.main};
     }
   }
+
+  .YourLibrary-suggestAction {
+    padding: 16px 20px;
+    margin-inline: 0 8px;
+    margin-block: 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    h3 {
+      ${({ theme }) => theme.typography.bold16};
+      color: ${({ theme }) => theme.palette.text.main};
+
+      margin-bottom: 8px;
+    }
+
+    p {
+      ${({ theme }) => theme.typography.regular14};
+      color: ${({ theme }) => theme.palette.text.main};
+
+      margin-bottom: 20px;
+    }
+  }
 `;
 
 export const LibraryItemFrame = styled(Stack.Item)`

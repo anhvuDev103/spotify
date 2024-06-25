@@ -7,9 +7,9 @@ import Features from './Features';
 import PlayingSong from './PlayingSong';
 
 const PlayerPanel = () => {
-  const { profile } = useRootStore();
+  const { isLogin } = useRootStore();
 
-  if (!profile) return null;
+  if (!isLogin) return null;
 
   return (
     <PlayerPanelFrame>

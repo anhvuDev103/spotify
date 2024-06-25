@@ -4,7 +4,9 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from '@components/Svg';
+import { useAppDataProvider } from '@hooks/providers/useAppDataProvider';
 import { useSharedServices } from '@hooks/providers/useSharedServicesProvider';
+import { useRootStore } from '@stores/root';
 import { Link } from 'react-router-dom';
 
 import Button from '../Button';
@@ -15,6 +17,11 @@ import { PagePanelProps } from './types';
 const PagePanel: React.FC<PagePanelProps> = ({ bottomExtension, children }) => {
   const { authService } = useSharedServices();
   const oauthUrl = authService.getOauthUrl();
+
+  const { isLogin } = useRootStore();
+  const { user } = useAppDataProvider();
+
+  const [avatar] = user?.profile.images || [];
 
   return (
     <PagePanelFrame>
@@ -37,40 +44,44 @@ const PagePanel: React.FC<PagePanelProps> = ({ bottomExtension, children }) => {
             </Button>
           </div>
           <div className='PagePanel-user'>
-            <Button
-              variant='contained'
-              hoverScale
-              startIcon={<ArrowDownCircleIcon color='text.main' />}
-              className='PagePanel-installBtn'
-            >
-              Install App
-            </Button>
-            <Button
-              variant='icon'
-              hoverScale
-              backgroundColor='button.contained.main'
-            >
-              <BellIcon />
-            </Button>
-            <Button
-              variant='icon'
-              hoverScale
-              backgroundColor='button.contained.main'
-            >
-              <img
-                alt='FIX_ME'
-                src='https://i2o.scdn.co/image/ab67706c0000cfa39a48455a14b7df88184cd74b'
-              />
-            </Button>
-            <Link to={oauthUrl}>
-              <Button
-                variant='emphasize'
-                size='lg'
-                className='PagePanel-loginBtn'
-              >
-                Log in
-              </Button>
-            </Link>
+            {isLogin && user?.profile && (
+              <>
+                <Button
+                  variant='contained'
+                  hoverScale
+                  startIcon={<ArrowDownCircleIcon color='text.main' />}
+                  className='PagePanel-installBtn'
+                  disabled
+                >
+                  Install App
+                </Button>
+                <Button
+                  variant='icon'
+                  hoverScale
+                  backgroundColor='button.contained.main'
+                >
+                  <BellIcon />
+                </Button>
+                <Button
+                  variant='icon'
+                  hoverScale
+                  backgroundColor='button.contained.main'
+                >
+                  <img alt={user?.profile.display_name} src={avatar.url} />
+                </Button>
+              </>
+            )}
+            {!isLogin && (
+              <Link to={oauthUrl}>
+                <Button
+                  variant='emphasize'
+                  size='lg'
+                  className='PagePanel-loginBtn'
+                >
+                  Log in
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
         {bottomExtension && (

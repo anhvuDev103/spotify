@@ -4,6 +4,7 @@ export const queryKeysFactory = {
   getCurrentUserSavedTracks: ['getCurrentUserSavedTracks'],
   getCurrentUserSavedAlbums: ['getCurrentUserSavedAlbums'],
   getCurrentUserFollowedArtists: ['getCurrentUserFollowedArtists'],
+  getCurrentUserProfile: ['getCurrentUserProfile'],
 
   //home
   getFeaturedPlaylists: ['getFeaturedPlaylists'],

@@ -5,6 +5,9 @@ import { RootStore } from './root';
 
 export interface AccountSlice {
   profile: UserProfile | undefined;
+  isLogin: boolean;
+
+  login: (profile?: UserProfile) => void;
 }
 
 export const createAccountSlice: StateCreator<
@@ -16,8 +19,16 @@ export const createAccountSlice: StateCreator<
   ],
   [],
   AccountSlice
-> = () => {
+> = (set) => {
   return {
     profile: undefined,
+    isLogin: false,
+
+    login: (profile) => {
+      set({
+        profile,
+        isLogin: !!profile,
+      });
+    },
   };
 };

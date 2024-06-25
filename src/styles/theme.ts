@@ -56,7 +56,6 @@ export const getDesignTokens = (mode: Mode) => {
       },
       background: {
         default: getColor('#000000', ''),
-        paper: getColor('#121212', ''),
         popover: getColor('#282828', ''),
       },
       border: {
@@ -96,6 +95,16 @@ export const getDesignTokens = (mode: Mode) => {
           main: getColor('#ffffff', ''),
           hover: getColor('#b7b7b7', ''),
           contrast: getColor('#000000', ''),
+        },
+      },
+      paper: {
+        contained: {
+          main: getColor('#121212', ''),
+          contrast: getColor('#ffffff', ''),
+        },
+        alpha: {
+          main: getColor('#242424', ''),
+          contrast: getColor('#ffffff', ''),
         },
       },
     },

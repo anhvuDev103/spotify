@@ -14,7 +14,7 @@ const CREATE_NEW_OPTIONS = [
   },
 ] as PopoverOptionType[];
 
-const CreateNew = () => {
+const CreateNewAction = () => {
   return (
     <Popover
       placement='bottom-end'
@@ -40,4 +40,4 @@ const CreateNew = () => {
   );
 };
 
-export default CreateNew;
+export default CreateNewAction;

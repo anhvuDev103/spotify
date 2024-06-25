@@ -9,9 +9,9 @@ import { memo } from 'react';
 import InQueueSong from './InQueueSong';
 
 const AsideRight = () => {
-  const { profile } = useRootStore();
+  const { isLogin } = useRootStore();
 
-  if (!profile) return null;
+  if (!isLogin) return null;
 
   return (
     <AsideRightFrame>
